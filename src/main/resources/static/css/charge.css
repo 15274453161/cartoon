@@ -1,0 +1,339 @@
+.main {
+    width: 990px;
+    margin: 0 auto;
+}
+.information {
+    height: 38px;
+    margin: 15px 0;
+    border: 1px solid #e6e6e6;
+    padding-top: 1px;
+    line-height: 38px;
+}
+.information_box {
+    height: 100%;
+    background: #f5f5f5;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.man_id {
+    width: 374px;
+    float: left;
+    _height: 30px;
+    padding-left: 118px;
+    background: url(../images/vip_pay/ico_list.png) 490px -152px no-repeat;
+    _padding: 8px 0 0px 118px;
+}
+.man_id i, .man_balance i {
+    width: 3px;
+    height: 3px;
+    background: url(../images/vip_pay/ico_list.png) -98px -2px no-repeat;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px;
+    overflow: hidden;
+}
+address, caption, cite, code, dfn, th, var, em, i, s {
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+}
+.man_id a {
+    margin: 0 5px;
+}
+.col_red {
+    color: #d9292b;
+}
+a {
+    text-decoration: none;
+    color: #333;
+}
+.man_balance {
+    float: left;
+    width: 350px;
+    padding-left: 120px;
+    _height: 30px;
+    _padding: 8px 0 0px 120px;
+}
+.col_yellow {
+    color: #ff6600;
+}
+.underline {
+    text-decoration: underline;
+}
+.ml10 {
+    margin-left: 10px;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.vip_payment_bg {
+    background: #ece4fc;
+    overflow: hidden;
+}
+.con {
+    padding: 3px 0px 8px 8px;
+    overflow: hidden;
+}
+.clearfix {
+    display: block;
+}
+.vip_payment_bg .payment_tablist {
+    width: 166px;
+    float: left;
+    z-index: 10;
+    position: relative;
+}
+.payment_tablist a.cur {
+    background: #fff;
+    border-width: 2px;
+    border-right: none !important;
+    width: 136px;
+    color: #333;
+    right: 0px;
+}
+.vip_payment_bg .payment_tablist a {
+    background: #f7f3ff;
+    color: #8e64e8;
+    position: relative;
+}
+.payment_tablist a {
+    width: 130px;
+    height: 50px;
+    display: inline-block;
+    border: 1px solid #c6b2f5;
+    font-size: 14px;
+    line-height: 50px;
+    font-weight: bold;
+    padding-left: 30px;
+    margin: 5px 0;
+}
+.payment_tablist a.cur i {
+    background-position: 0 0px;
+}
+.vip_payment_bg .payment_tablist a i {
+    display: inline-block;
+    width: 5px;
+    height: 7px;
+    overflow: hidden;
+    background: url(../images/vip_pay/ico_list.png) 0 -10px;
+    position: absolute;
+    left: 12px;
+    top: 21px;
+}
+.contact {
+    margin-top: 10px;
+    line-height: 30px;
+    color: #141414;
+}
+.payment_con {
+    background: #fff;
+    float: left;
+    min-height: 800px;
+    _height: 800px;
+    width: 804px;
+    border: 2px solid #c6b2f5;
+    margin-top: 5px;
+    padding-top: 35px;
+    _position: relative;
+    _left: -2px;
+}
+.paymentlist {
+    width: 760px;
+    _width: 755px;
+    margin-left: 50px;
+    padding-bottom: 20px;
+    position: relative;
+}
+.paymentrow {
+    margin-bottom: 15px;
+    font-size: 14px;
+    min-height: 30px;
+    _height: 30px;
+}
+.paymentrow .title {
+    width: 100px;
+    text-align: right;
+    float: left;
+}
+.paymentrow .comont {
+    width: 610px;
+    float: left;
+    margin-left: 10px;
+    position: relative;
+}
+.paymentrow .comont span {
+    vertical-align: top;
+}
+.paymentrow .comont .send_friend {
+    display: inline-block;
+    width: 90px;
+    height: 38px;
+    margin-left: 20px;
+    font-size: 12px;
+}
+.paymentrow .comont span {
+    vertical-align: top;
+}
+.clearfix:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+.paymentrow {
+    margin-bottom: 15px;
+    font-size: 12px;
+    min-height: 30px;
+    _height: 30px;
+}
+.paymentrow .title {
+    width: 100px;
+    text-align: right;
+    float: left;
+}
+.pay_month_area {
+    float: left;
+    margin-left: 10px;
+    position: relative;
+}
+.pay_way_new {
+    width: 180px;
+    height: 100px;
+    border: 1px solid #c6c6c6;
+    float: left;
+    margin-right: 16px;
+    position: relative;
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.pay_way_new .top_info {
+    height: 70%;
+    text-align: center;
+    border-bottom: 1px dashed #c6c6c6;
+    font-size: 16px;
+    position: relative;
+}
+.pay_way_new .v-align-helper {
+    text-align: center;
+}
+.pay_way_new .top_info .price_info p {
+    margin-top: 20px;
+}
+.pay_way_new .v-align-helper p {
+    display: inline-block;
+    *display: inline;
+    *zoom: 1;
+    vertical-align: middle;
+    font-size: 0;
+}
+.pay_way_new .top_info .price_info .p_val {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.pay_way_new .v-align-helper:after {
+    content: '';
+}
+
+.pay_way_new .bot_info .remarks {
+    font-size: 12px;
+}
+
+.pay_way_new .top_info .price_info .p_unit {
+    font-size: 20px;
+}
+.pay_way_new .top_info .price_info .p_day_unit {
+    font-size: 16px;
+    padding-left: 5px;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, textarea, p, blockquote, th {
+    margin: 0;
+    padding: 0;
+}
+.zhushi {
+    height: 30px;
+    line-height: 20px;
+    font-size: 12px;
+    padding-left: 110px;
+    margin-top: -10px;
+}
+.lh20 {
+    line-height: 20px;
+}
+.ml110 {
+    margin-left: 110px;
+}
+.mt10 {
+    margin-top: 10px;
+    font-size: 12px;
+}
+input, select {
+    vertical-align: middle;
+}
+.col_blue {
+    color: #185ec0;
+    font-size: 12px;
+}
+.underline {
+    text-decoration: underline;
+}
+.next_btn {
+    background-position: 0px -283px;
+}
+
+.hands {
+    cursor: pointer;
+}
+
+.pay_wait {
+    display: block;
+    background: #ccc;
+    width: 145px;
+    height: 50px;
+    border: 1px solid #aaa;
+    text-align: center;
+    line-height: 50px;
+}
+.next_span{
+    width: 120px;
+    height: 40px;
+    background-color: #ece4fc;
+    text-align: center;
+    display: inline-block;
+    line-height: 40px;
+    border-radius: 5px;
+}
+.pay_way_new.cur {
+    border: 2px solid #b69df2;
+    width: 178px;
+    height: 98px;
+}
+.cb {
+    clear: both;
+}
+.pay_way_new.cur .top_info .price_info .p_val {
+    color: #ff0f0f;
+}
+.pay_way_new.cur .top_info {
+    border-bottom: 1px dashed #b69df2;
+    color: #8865d6;
+}
+.pay_way_new.cur .bot_info .remarks {
+    color: #8865d6;
+}
+.pay_way_new.cur .bot_right_bg {
+    width: 16px;
+    height: 16px;
+    background: url(images/ok.png) no-repeat -64px -41px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}

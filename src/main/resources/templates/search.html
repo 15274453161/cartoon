@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查询界面</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" th:href="@{framework/bootstrap.min.css}"/>
+    <!--//fonts-->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+    <style>
+        /*.portfolio-wrapper h5{
+            font-size: 18px;
+            position: absolute;
+            top:5px;
+            color: #00f05d; !*#00f05d*!
+            left: 8px;
+        }
+
+        .portfolio-wrapper p{
+            font-size: 18px;
+            position: absolute;
+            bottom:5px;
+            color: #fd337f; !*#00f05d*!
+            left: 8px;
+        }*/
+
+        .portfolio-wrapper p, h5 {
+
+            font-size: 16px;
+            color: #333333;
+            padding: 0;
+            margin: 5px 0 3px 0;
+        }
+
+        .portfolio-wrapper p {
+            font-size: 14px;
+            color: #444;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div th:replace="header::#top"></div>
+<!--//以下是查询的界面-->
+
+<div class="snb_wrap">
+    <form class="snb_inner">
+
+        <div class="big_search NE=a:sch" id="searchWrap">
+            <!--  <form th:action="@{/search}" th:method="post" id="searchForm">-->
+            <div class="search_area _searchArea">
+                <span class="input_box"><input type="text" class="input_search _txtKeyword" th:value="${cartoonName}"
+                                               name="cartoonName"></span>
+                <em class="search_dsc _searchDesc" style="display:none">可以用作品或作者进行搜索。</em>
+                <span class="form_area _searchForm">
+					<img th:src="@{/images/search.png}">
+
+                </span>
+            </div>
+        </div>
+        <!-- </form>-->
+        <script>
+            $('.search_area img').click(function () {
+                var searchForm = $('#searchForm');
+               var cartoonName=$('.input_search').val();
+
+
+               window.location.href="/search/?cartoonName="+cartoonName;
+            });
+        </script>
+
+</div>
+
+</div>
+</div>
+
+<!--显示-->
+<div id="portfoliolist">
+    <div class="wrapper" style="margin:0 auto;width:1100px;padding:0 20px;">
+
+        <div th:each="cartoon: ${cartoon}" class="portfolio app mix_all" data-cat="app"
+             style="display: inline-block; opacity: 1;background-color: #fafafa">
+            <a th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=1)}" style="text-decoration: none">
+                <div class="portfolio-wrapper now-content ">
+                    <img class="img-responsive"
+                         th:src="${cartoon.ctUrl}" alt=""/><!--${cartoon.ctUrl}-->
+
+                    <h5 th:text="${cartoon.ctName}"></h5>
+                    <p th:text="${cartoon.cyName}"></p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+
+    <div class="clearfix"></div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,367 @@
+.detail_header {
+    position: relative;
+    z-index: 20;
+    height: 240px;
+    text-align: center;
+}
+.detail_header .thmb {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.detail_header .info {
+    display: inline-block;
+    *display: inline;
+    position: relative;
+    max-width: 1196px;
+    vertical-align: middle;
+    zoom: 1;
+    top:40px;
+}
+
+.detail_header .info .genre {
+    margin-top: 2px;
+    font-size: 20px;
+    line-height: 21px;
+    font-weight: normal;
+}
+.genre.g_love {
+    color: #fd337f;
+}
+.genre {
+    font-size: 14px;
+}
+.detail_header.type_white .subj {
+    color: #000;
+}
+.detail_header .info .subj {
+    padding-top: 5px;
+    font-size: 57px;
+    line-height: 57px;
+    font-weight: normal;
+
+    clear: both;
+}
+.detail_header.type_white .info .author {
+    color: #252525;
+}
+.detail_header .info .subj + .author {
+    margin-left: 0;
+    margin-top:15px;
+}
+.detail_header .info .author {
+    margin-top: 8px;
+    position: relative;
+    margin-left: 21px;
+    font-size: 16px;
+    color: #fff;
+    display: inline-block;
+}
+
+.detail_body {
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    min-height: 839px;
+    margin-bottom: 70px;
+    background: #fff;
+}
+
+.detail_body .detail_lst {
+    float: left;
+    position: relative;
+    margin-left:30px;
+    min-height: 772px;
+    padding: 31px 20px 66px;
+    border-right: 2px solid #f5f5f5;
+    background: #fff;
+}
+
+
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+.detail_body .detail_lst li:first-child {
+    border-top: 1px solid #f5f5f5;
+}
+
+.detail_body .detail_lst li {
+    position: relative;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.detail_body .detail_lst li>a {
+    display: block;
+    height: 73px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.detail_body .detail_lst .thmb {
+    position: relative;
+    padding: 0;
+}
+
+
+.detail_body .detail_lst .subj {
+    width: 400px;
+    margin-left: 12px;
+    padding-top: 24px;
+    font-size: 17px;
+}
+
+.detail_body .detail_lst .manage_blank {
+    display: none;
+    width: 114px;
+    height: 100%;
+    padding: 0;
+    vertical-align: top;
+}
+
+.detail_body .detail_lst .date {
+    width: 102px;
+    font-size: 14px;
+    color: #b1b1b1;
+    letter-spacing: 1px;
+}
+
+.dongman_cn .detail_body .detail_lst .ico_like {
+    margin-top: 1px;
+}
+
+.detail_body .detail_lst .ico_like {
+    margin: 4px 5px 0 0;
+}
+
+.dongman_cn .ico_like {
+    width: 16px;
+    height: 16px;
+    background-position: -320px -1500px;
+}
+
+.detail_body .detail_lst .tx {
+    width: 59px;
+    padding-top: 25px;
+    font-size: 17px;
+    color: #3d3d3d;
+    letter-spacing: 1px;
+    text-align: right;
+}
+
+.detail_body .detail_lst ul span {
+    display: inline-block;
+    padding-top: 26px;
+    vertical-align: top;
+}
+
+.detail_body .detail_lst .subj span {
+    overflow: hidden;
+    width: auto;
+    max-width: 370px;
+    padding: 0;
+    color: #3d3d3d;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.dongman_cn .ico_like {
+    width: 16px;
+    height: 16px;
+    background-position: -320px -1500px;
+    display: inline-block;
+    overflow: hidden;
+
+    line-height: 999px;
+    vertical-align: top;
+}
+
+
+
+.detail_body .paginate {
+    position: absolute;
+    left: 0;
+    bottom: 18px;
+    width: 100%;
+    text-align: center;
+}
+
+.paginate {
+    overflow: hidden;
+    text-align: center;
+}
+
+.aside.detail {
+    position: relative;
+    width: 421px;
+    height: 100%;
+    padding: 43px 0 316px 40px;
+    margin-left: -2px;
+    border-left: 2px solid #f5f5f5;
+}
+
+.aside {
+    float: right;
+    width: 190px;
+}
+
+
+ul,
+ol,
+li {
+    list-style: none;
+}
+
+.aside.detail .day_info {
+    position: relative;
+    font-size: 19px;
+    padding: 4px 30px 16px 40px;
+    line-height: 25px;
+    font-family: 'hind_m', 'simhei', verdana, Helvetica, sans-serif;
+    color: #000;
+}
+
+.aside.detail .summary {
+    margin: 3px 57px 0 0;
+    font-size: 16px;
+    line-height: 25px;
+    color: #313131;
+}
+.aside.detail .aside_btn {
+    margin-top: 22px;
+}
+
+.aside.detail .aside_btn .btn_type7 {
+    position: relative;
+    width: 282px;
+    height: 46px;
+    margin-top: 20px;
+    background: #2f2f2f;
+    color: #fff;
+}
+
+.btn_type7 {
+    height: 43px;
+    line-height: 46px;
+    padding: 0 15px 0 20px;
+    background: #05f269;
+    text-align: center;
+    font-size: 16px;
+
+    border-radius: 26px;
+}
+
+.aside.detail .aside_btn .btn_type7 .ico_arr21 {
+    position: absolute;
+    top: 17px;
+    right: 19px;
+}
+
+.btn_type7 span {
+    margin: -2px 0 0 10px;
+    vertical-align: middle;
+}
+
+.ico_arr21 {
+    width: 8px;
+    height: 12px;
+    background-position: -330px -620px;
+}
+
+[class^=btn_],
+[class^=ico_],
+[class^=num_ranking],
+[class^=badge_] {
+    display: inline-block;
+
+}
+
+.detail_header {
+    position: relative;
+    z-index: 20;
+    height: 240px;
+    text-align: center;
+}
+
+.detail_header .thmb {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.lockedPop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.lockedPop .popBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 345px;
+    height: 478px;
+    border-radius: 10px;
+    font-size: 14px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #ffffff;
+    text-align: center;
+}
+
+.lockedPop .popBox .info {
+    background: #8b00e9;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.lockedPop .popBox .info .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    filter: alpha(opacity=20);
+    opacity: 0.2;
+}
+
+.lockedPop .popBox .info p {
+    padding-top: 10px;
+    font-size: 20px;
+    color: #000;
+    font-weight: bold;
+}
+
+.lockedPop .popBox .download p {
+    padding-top: 20px;
+    font-size: 16px;
+    color: gray;
+    font-weight: bold;
+}
+
+.lockedPop .popBox .download img {
+    width: 160px;
+    margin: 10px 0 32px 0;
+}

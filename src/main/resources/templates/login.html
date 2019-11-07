@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all" />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" th:href="@{framework/bootstrap.min.css}" />
+    <!--//fonts-->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+
+    <title>登录</title>
+</head>
+<body>
+
+<div th:replace="header::#top"></div>
+<!-- 登录主题内容 [[ -->
+ <form th:action="@{/account-login}" method="post">
+	<div class="container">
+		<div class="row"><!-- photo/account/account_background.png images/login.jpg-->
+			<div class="col-lg-6 col-md-6"><img th:src="@{/images/login.jpg}" alt="" class="img-responsive" style="margin-top:50px"/></div>
+			<div class="col-lg-4 col-md-6 col-lg-offset-1">
+					<br><br><br><br>
+				  <h3><img th:src="@{/photo/index/title_logo.png}" width="50" height="35"></img>登录 <span style="font-weight: bold;" class="css716dd981b5489">WEBTOON</span></h3>
+				  <div class="form-group">
+				    <div class="input-group">
+				      <div class="input-group-addon"><i class="glyphicon glyphicon-user"></i></div>
+				      <input class="form-control" type="text" placeholder="请输入用户名" id="usernameInput" name="userName">
+				     	<!--用户名存在显示--><span class="glyphicon glyphicon-ok form-control-feedback" style="display:none" id="existName"></span>
+						<!--用户名不存在显示--><span class="glyphicon glyphicon-remove form-control-feedback" style="display:none" id="noExistName"></span>
+					</div>
+				    <br>
+				  <div class="input-group">
+				      <div class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></div>
+				      <input class="form-control" type="password" placeholder="请输入密码" name="password" id="passwordInput">
+				    </div>
+				  </div>
+					  <a type="button" class="btn btn-default pull-right" id="registerBtn" style="margin-left:20px" href="account-question-show">&nbsp;&nbsp;忘记密码&nbsp;&nbsp;</a>
+ 					  <button type="submit"  class="btn btn-default pull-right" style="background-color:#8b00e9;color:white;" id="loginBtn" >&nbsp;&nbsp;登录&nbsp;&nbsp;</button>
+			</div>
+		</div>
+	</div>
+	   <!-- 用户已登录显示部分 -->
+                   
+ </form>
+<!-- 登录主题内容 ]] -->
+
+
+
+<script type="text/javascript">
+
+
+
+$("#loginBtn").on("click", function() {
+	  var userName = $("#usernameInput").val();
+      var password = $("#passwordInput").val();
+      
+	if ($("#usernameInput").val() == "" || $("#passwordInput").val() == "") {
+		alert("用户名或密码不能为空,请检查后重试!");
+		return false;
+	}/*else{
+		$.ajax({
+		    url:"/account-login",
+		    type:'post',
+			//加上这句话
+			xhrFields: {
+				withCredentials: true
+			},
+		    data:{
+		    	userName:userName,
+		    	password:password
+		    },
+		    success:function(data){
+		    	
+
+		    	if(data.code=="登录成功"){
+					/!*$(".dropdown-menu").empty();
+                    $(".dropdown-menu").append(' <li class="divider"></li>\n' +
+							'<li><a id="invalidate"><i class="glyphicon glyphicon-user" style="color:#8b00e9;"></i> 注销用户</a></li>');*!/
+
+		    		 window.location.href="/index";
+		    	}else if(data.code=="您已经登录"){
+				/!*	$(".dropdown-menu").empty();
+					$(".dropdown-menu").append(' <li class="divider"></li>\n' +
+							'<li><a id="invalidate"><i class="glyphicon glyphicon-user" style="color:#8b00e9;"></i> 注销用户</a></li>');*!/
+		    		alert(data.code);
+		    	}else{
+					alert(data.code);
+				}
+		    },
+		    error:function(){
+		        console.log("登录失败");
+		    },
+		});
+	}*/
+})
+</script>
+</body>
+</html>

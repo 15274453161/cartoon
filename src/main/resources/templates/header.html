@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>头部</title>
+</head>
+<style>
+    .nav {
+        float: right;
+    }
+</style>
+<body>
+<!--header-->
+<th:block id="top">
+    <div class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="top-nav">
+                    <span class="menu"> </span>
+                    <ul style="float: left;">
+
+                        <li class="active"><a th:href="@{/index}" class="btn_logo"><img th:src="@{/images/logo.jpg}"
+                                                                                        alt=""> </a></li>
+                        <li><a th:href="@{/weekSort}" data-hover="星期类别"> 星期类别 </a></li>
+                        <li><a href="#" data-hover=" 分类"> 分类 </a></li>
+                        <li><a th:href="@{/rank/(categoryId=5,ageId=1)}" data-hover="排行榜"> 排行榜</a></li>
+                        <li><a th:href="@{/enter_chager}" data-hover="用户充值中心">用户充值中心 </a></li>
+
+                    </ul>
+                    <!-- 用户登录注册 -->
+                    <ul class="nav navbar-nav navbar-right">
+
+                        <li class="dropdown">
+                            <!-- 用户未登录显示部分 -->
+
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">登录/注册 <span
+                                    class="caret"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="loginRegister"><a th:href="@{/account-login-show}"><i class="glyphicon glyphicon-user"
+                                                                           style="color:#8b00e9;"></i> 用户登录</a></li>
+                                <li class="divider loginRegister"></li><!--#f36c60-->
+                                <li class="loginRegister"><a th:href="@{/account-register-show}"><i class="glyphicon glyphicon-plus-sign"
+                                                                              style="color:#8b00e9;"></i> 注册账号</a></li>
+                                <li class="divider validate" style="display: none"></li>
+                                <li class="validate"  style="display: none"><a onclick="invalidateUser()" class="invalidateUser"><i class="glyphicon glyphicon-user" style="color:#8b00e9;"></i> 注销用户</a></li>
+                            </ul>
+
+                            <!-- 用户已登录显示部分 -->
+                            <input type="hidden" id="user" th:value="${code}">
+                            <input type="hidden" id="userInfor" th:value="${userId}">
+                        </li>
+                    </ul>
+                    <!--用户注销-->
+                    <script>
+                        $("span.menu").click(function () {
+                            $(".top-nav ul").slideToggle(500, function () {
+                            });
+                        });
+
+                         function invalidateUser () {
+                            console.log(1)
+                            $.ajax({
+                                url: "/validateUser",
+                                type: 'post',
+                                async:false, //设置ajax的同步
+                                success: function (data) {
+                                    alert("注销成功");
+                                    //设置隐藏userid为0
+                                  var userId= $("#userInfor").val(0).val();
+
+                                    if (userId== 0) {
+
+                                        $('.loginRegister').css('display','block');
+                                        $('.validate').css('display','none');
+                                        $(".dropdown-toggle").html("登录/注册");
+
+                                    }
+                                },
+                                error: function () {
+                                },
+                            });
+                        }
+
+
+                    </script>
+                    <!-- 登录判断-->
+                    <script>
+                        var isLogin = $("#user").val();
+                        var userId = $("#userInfor").val();
+                        // alert(userId);
+                        //登录以后将头部信息改变  改成可以注销
+                        if (isLogin == '登录成功' || isLogin == '您已经登录，请不要重复登录' || userId != 0) {
+
+                           // alert(isLogin);
+                            $('.loginRegister').css('display','none');
+                            $(".dropdown-toggle").html("注销用户");
+                            $('.validate').css('display','block');
+
+                        } else if (isLogin == '用户密码错误' || isLogin == '不存在此用户，请先注册') {
+                            alert(isLogin);
+                        }
+                        if (isLogin == '登录成功') {
+                            window.location.href="/index";
+                        }
+                    </script>
+                    <!--动态改变头部为登录注册-->
+                    <script>
+                        var userId = $("#userInfor").val();
+                        function recovery() {
+                            if (userId == 0) {
+                                $('.loginRegister').css('display','block');
+                                $('.validate').css('display','none');
+                                $(".dropdown-toggle").html("登录/注册");
+
+                            }
+                        }
+                    </script>
+
+                </div>
+
+                <div class="header-top-on">
+                    <ul class="social-in">
+                        <li><a href="#"><i> </i></a></li>
+                        <li><a href="#"><i class="tin"> </i></a></li>
+                        <li><a href="#"><i class="gmail"> </i></a></li>
+                        <li><a href="#"><i class="dribble"> </i></a></li>
+                        <li><a href="#"><i class="browser"> </i></a></li>
+                    </ul>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+
+    </div>
+</th:block>
+<!---->
+</body>
+
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qgh.dao.CategoryDao">
+    <insert id="addCategory" >
+        replace into category(cy_name) values (#{cyName})
+    </insert>
+    <select id="searchIdByName" resultType="com.qgh.pojo.Category">
+     select * from category where cy_name=#{cyName}
+    </select>
+    <!--出所有漫画分类-->
+    <select id="selectAllCY" resultType="com.qgh.pojo.Category">
+        select * from category
+    </select>
+
+    <!--根据漫画id查询出分类名称-->
+    <select id="seletcById" resultType="com.qgh.pojo.Category">
+        select * from category
+        where id=#{id}
+    </select>
+</mapper>

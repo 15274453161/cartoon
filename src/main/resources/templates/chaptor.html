@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>漫画章节</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/chaptor.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
+   <!-- <link rel="stylesheet" th:href="@{framework/bootstrap.min.css}"/>-->
+    <!--//fonts-->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+    <style>
+        .page {
+            height: 30px;
+            display: table;
+            margin: 0 auto;
+            margin-top: 15px;
+        }
+
+        .page span {
+
+             margin-right: 10px;
+             width: 20px;
+             height: 25px;
+             line-height:25px;
+             border:1px solid #444;
+             border-radius: 6px;
+             padding: 5px;
+             background-color: #8b00e9;
+             color: #fff;
+         }
+        .page span a{
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+<div th:replace="header::#top"></div>
+<div class="detail_header type_white">
+    <span class="thmb"><img th:src="@{/images/chaptor1.png}" height="240" alt="Representative image"></span>
+    <div class="info">
+        <h2 class="genre g_love" th:text="${category.cyName}"></h2>
+        <h1 class="subj" th:text="${cartoon.ctName}"></h1>
+        <span class="author" th:text="${'作者: '+cartoon.ctAuthor}"><a
+                href="//www.dongmanmanhua.cn/search?searchMode=AUTHOR&amp;keyword=文: Limejeongwon"
+                class="ico_search2 _scriptSearch" title="作家信息">作家信息</a></span>
+        <span class="author">图: KIRTY<a href="//www.dongmanmanhua.cn/search?searchMode=AUTHOR&amp;keyword=图: KIRTY"
+                                        class="ico_search2 _scriptSearch" title="作家信息">作家信息</a></span>
+    </div>
+
+</div>
+
+
+<div class="detail_body" style="">
+    <div class="detail_lst">
+        <ul id="_listUl">
+            <th:block th:each="chaptors:${chaptors}">
+                <li class="episode_40" data-episode-no="40" style="margin-bottom: 2px;">
+                    <!--th:href="@{/section/(chaptorId=${chaptors.id},cartoonId=${cartoon.id})}"-->
+                    <a data-buried-obj="1" th:href="@{/section/(chaptorId=${chaptors.id},cartoonId=${cartoon.id})}"  class="NPI=a:list,i=1308,r=40,g:zh_CN_zh-hans">
+							<span class="thmb">
+								<img th:src="${chaptors.chaptorUrl}" width="100" height="73" alt="图片">
+							</span>
+                        <span class="subj">
+                            <span th:text="${chaptors.chaptorName}"></span>
+                             <span class="pay"  style="display: none" th:data="${chaptors.pay}"></span>
+                             <img th:src="@{/images/lock16.png}" style="display: none">
+
+                        </span>
+                        <span class="manage_blank"></span>
+                        <span class="date" th:text="${chaptors.updateTime}">
+
+							</span>
+                        <span class="like_area _likeitArea" th:text="${chaptors.zanNum}"><img
+                                th:src="@{/images/zan.png}" alt=""></span>
+                        <span class="tx" th:text="${chaptors.id}"></span>
+
+
+
+                    </a>
+                </li>
+            </th:block>
+
+        </ul>
+         <!--动态添加锁标志-->
+        <script>
+            var pay=$('.pay');
+
+            for (var i=0;i<pay.length;++i){
+                console.log($(pay[i]).parent().parent().attr('href'))
+               if(parseInt($(pay[i]).attr('data'))!=0){
+                   $(pay[i]).next('img').css('display','inline-block');
+                   $(pay[i]).parent().parent().attr('href','javascript:void(0)');
+               }else{
+                  /* alert("免费")*/
+               }
+            }
+
+        </script>
+        <!--判断是否是收费章节-->
+        <script>
+
+            $('#_listUl li').click(function () {
+                var li=$(this)
+                var pay=li.children().find('.pay')
+
+                console.log(pay.attr('data'));
+
+                //等于1 付费章节 弹出提示框
+                if (pay.attr('data')==1){
+
+                    $('.lockedPop').css('display','block');
+                }
+            })
+        </script>
+
+        <div class="page">
+
+        总共有:  <th:block th:text="${Pages}"></th:block>&nbsp;页
+        <span> <a class="prev" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}-1)}">&lt;&lt;</a></span>
+
+        当前页： <a class="num" href="" th:text="${currentPage}" style="margin-right: 10px;text-decoration: none"></a>
+        <span>  <a class="next" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}+1)}">&gt;&gt;</a></span>
+
+        <form th:action="@{/chaptor}" th:method="post" style="margin-top: 15px;">
+            <span>跳转到:   </span>
+            <input th:type="text" name="currentPage" style="width: 50px;">
+            <input th:type="hidden" name="cartoonId"  th:value="${cartoon.id}">
+            <input th:type="submit" name="page"  th:value="提交" style="width: 50px;">
+
+        </form>
+
+    </div>
+    </div>
+
+    <div class="aside detail" id="_asideDetail">
+        <p class="day_info"><span class="txt_ico_completed2"></span>完结</p>
+        <p class="summary" th:text="${cartoon.ctIntroduce}"></p>
+        <div class="aside_btn">
+            <a data-buried-obj="1" data-sc-name="PC_detail-page_read-first-btn"
+               th:href="@{/section/(chaptorId=${firsId},cartoonId=${cartoon.id})}"
+               class="btn_type7 NPI=a:gofirst,g:zh_CN_zh-hans" id="_btnEpisode" >阅读第一话<span class="ico_arr21"></span></a>
+        </div>
+    </div>
+</div>
+
+<div th:replace="footer::#footer"></div>
+
+
+<div class="lockedPop" style="display: none">
+    <div class="popBox">
+        <div class="info"><a href="javascript:void(0);" class="close">X</a> <img src="https://static3w.kuaikanmanhua.com/static-kkfront-pc/image/web_locked.213475c.png">
+            <p>此章节为付费内容</p>
+        </div>
+        <div class="download">
+            <p>扫描下方二维码或点击
+                <a th:href="@{/enter_chager}" target="_blank" rel="nofollow">
+                    用户充值中心
+                </a>
+                登陆
+            </p>
+            <p>客户端继续浏览</p> <img src="https://static3w.kuaikanmanhua.com/static-kkfront-pc/image/download.a411a29.png">
+        </div>
+    </div>
+</div>
+
+<script>
+    $('.close').click(function () {
+        $('.lockedPop').css('display','none');
+    })
+</script>
+
+</body>
+</html>

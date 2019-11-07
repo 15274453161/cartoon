@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qgh.dao.SectionDao">
+
+
+    <insert id="addSection" parameterType="com.qgh.pojo.Section">
+        insert into section(chaptor_id,section_url) values (#{chaptorId},#{sectionUrl})
+    </insert>
+    <select id="searchByChartorId" resultType="com.qgh.pojo.Section">
+       select * from section where
+       chaptor_id=#{chaptorId}
+    </select>
+
+    <select id="preAndNextSection" resultType="com.qgh.pojo.Section">
+       select * from chaptor where
+       chaptor_id=#{chaptorId} AND
+       ct_id=#{cartoonId}
+    </select>
+</mapper>

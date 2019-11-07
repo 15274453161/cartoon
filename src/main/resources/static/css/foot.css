@@ -1,0 +1,170 @@
+.foot_app {
+    position: relative;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+}
+.foot_cont {
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    vertical-align: top;
+    zoom: 1;
+}
+.dongman_cn .foot_app .ico_qrcode_01 {
+    float: left;
+    width: 391px;
+    height: 140px;
+    margin-top: 13px;
+    background: url('/images/二维码.PNG')0 18px no-repeat;
+}
+.foot_app .foot_down_msg {
+    float: left;
+    padding: 30px 0 33px 18px;
+    text-align: left;
+}
+
+.foot_app .foot_down_msg .txt {
+    height: 54px;
+    font-size: 16px;
+    line-height: 21px;
+    color: #000;
+}
+
+.dongman_cn .foot_app .btn_google {
+    margin-right: 10px;
+}
+
+.dongman_cn .foot_app .btn_ios {
+    width: 102px;
+    height: 30px;
+    line-height: 32px;
+    background: #b1b1b1;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    font-size: 16px;
+    color: #fff;
+}
+.foot_app .btn_google {
+    margin-right: 4px;
+    width: 124px;
+    height: 36px;
+    background-position: -340px -1300px;
+}
+.foot_app .foot_logo, .foot_app a {
+    display: inline-block;
+    *display: inline;
+    vertical-align: middle;
+    zoom: 1;
+}
+.btn_google {
+    width: 65px;
+    height: 64px;
+    background-position: -372px -1150px;
+}
+
+.dongman_cn .foot_app .btn_ios {
+    width: 102px;
+    height: 30px;
+    line-height: 32px;
+    background: #b1b1b1;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    font-size: 16px;
+    color: #fff;
+}
+.foot_app .btn_ios {
+    width: 124px;
+    height: 36px;
+    background-position: -340px -1340px;
+}
+
+ .foot_app .ico_qrcode_01 {
+    float: left;
+    width: 391px;
+    height: 140px;
+    margin-top: 13px;
+    background: url('/images/二维码.PNG')0 8px no-repeat;
+}
+
+.foot_app .foot_down_msg .txt {
+    height: 57px;
+    padding-top: 3px;
+}
+
+.foot_app .btn_google {
+    margin-right: 10px;
+}
+
+.foot_app .btn_google{
+    width: 102px;
+    height: 30px;
+    line-height: 32px;
+    background: #b1b1b1;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+}
+
+.foot_app .btn_ios {
+    width: 102px;
+    height: 30px;
+    line-height: 32px;
+    background: #b1b1b1;
+    border-radius: 15px;
+    text-align: center;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    font-size: 16px;
+    color: #fff;
+    text-decoration: none;
+}
+
+
+.foot_menu {
+    position: relative;
+    padding-top: 29px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.foot_menu li {
+    display: inline-block;
+    *display: inline;
+    height: 15px;
+    vertical-align: top;
+    zoom: 1;
+}
+
+.foot_menu a {
+    font-size: 16px;
+    line-height: 18px;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.foot_menu .bar {
+    margin: 0 16px;
+}
+.foot_menu li {
+    display: inline-block;
+    *display: inline;
+    height: 15px;
+    vertical-align: top;
+    zoom: 1;
+}
+.bar {
+    display: inline-block;
+    overflow: hidden;
+    width: 1px;
+    height: 16px;
+    background: #d6d6d6;
+    line-height: 999px;
+    vertical-align: top;
+}

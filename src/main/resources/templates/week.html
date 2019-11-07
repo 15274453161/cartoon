@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>星期类别</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" th:href="@{/framework/bootstrap.min.css}"/>
+    <!--//fonts-->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+<style>
+    .snb_wrap {
+        clear: both;
+        position: relative;
+        z-index: 20;
+        height: 67px;
+        border-top: 1px solid #eaeaea;
+        border-bottom: 1px solid #eaeaea;
+        background: #fff;
+        text-align: center;
+    }
+    .snb_inner {
+        position: relative;
+        width: 1117px;
+        margin: 0 auto;
+    }
+
+    .snb_wrap.my .snb, .snb_wrap.terms .snb, .snb_wrap.about .snb, .snb_wrap.daily .snb {
+        display: inline-block;
+        *display: inline;
+        padding: 0;
+        vertical-align: top;
+        zoom: 1;
+    }
+    .snb {
+        height: 67px;
+        width: 1117px;
+        margin: 0 auto;
+    }
+    ul, ol, li {
+        list-style: none;
+    }
+
+
+    .dongman_cn .snb li {
+    }
+
+
+    a {
+        color: #000;
+        text-decoration: none;
+    }
+    .snb_wrap.daily .snb li {
+        width: 144px;
+    }
+    .dongman_cn .snb li {
+    }
+    .snb li.on {
+        position: relative;
+        top: -1px;
+    }
+    .snb li {
+        float: left;
+        /* width: 10.4%; */
+    }
+    .snb li.on a {
+        /* height: 68px; */
+        background: #00d564;
+        color: #fff!important;
+        padding-top: 1px;
+    }
+    .snb a {
+        display: block;
+        width: 91px;
+        height: 67px;
+        line-height: 70px;
+        font-size: 15px;
+        font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+        color: #000;
+        text-align: center;
+        cursor: pointer;
+    }
+    .snb:after {
+        display: block;
+        clear: both;
+        content: '';
+    }
+    .snb_sort {
+        position: absolute;
+        top: 0;
+        right: -214px;
+        width: 150px;
+    }
+    .dongman_cn .snb_sort .checked {
+        padding-right: 67px;
+    }
+    .snb_sort .checked {
+        display: block;
+        height: 67px;
+        line-height: 70px;
+        padding-right: 0 !important;
+        text-align: center;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .pull_down_02 {
+        position: absolute;
+        top: 28px;
+        right: 13px;
+        width: 12px;
+        height: 11px;
+        vertical-align: middle;
+        margin-left: 16.5px;
+        background: url(//cdn.static.dongmanmanhua.cn/image/pc/ico_down_01.png) no-repeat;
+    }
+    .snb_sort .sort_box {
+        display: none;
+        position: absolute;
+        top: 67px;
+        left: 0;
+        z-index: 10;
+        width: 148px;
+        padding: 14px 0 21px;
+        border: 1px solid #eaeaea;
+        background: #fbfbfb;
+    }
+    .snb_sort .sort_box li {
+        position: relative;
+        text-align: right;
+    }
+    .dongman_cn .snb_sort .sort_box a {
+        padding-right: 66px;
+    }
+    .snb_sort .sort_box a {
+        display: block;
+        height: 40px;
+        line-height: 42px;
+        padding-right: 0 !important;
+        cursor: pointer;
+        font-size: 15px;
+        text-align: center;
+    }
+
+    body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
+        margin: 0;
+        padding: 0;
+    }
+</style>
+</head>
+<body>
+<div th:replace="header::#top"></div>
+<!--完结或连载-->
+<div class="snb_wrap daily _snb_wrap" style="width: 100%; position: absolute;">
+    <div class="snb_inner">
+
+        <ul class="snb _type_selector">
+            <li class="ongoing on" data-type="ONGOING"><a data-buried-obj="1" data-sc-name="PC_week-page_serial-btn" href="#ongoing">连载</a></li>
+            <li class="completed" data-type="COMPLETED"><a data-buried-obj="1" data-sc-name="PC_week-page_end-btn" href="#completed">完结</a></li>
+        </ul>
+
+
+
+        <div class="snb_sort _sorting">
+            <a href="#" onclick="return false;" id="_sortLink" class="checked">按人气 <span class="pull_down_02"></span></a>
+            <ul class="sort_box">
+
+                <li><a href="#" onclick="return false;" data-sort="READ_COUNT">按人气 </a></li>
+
+                <li><a href="#" onclick="return false;" data-sort="LIKEIT">按点赞数 </a></li>
+
+                <li><a href="#" onclick="return false;" data-sort="UPDATE">按更新时间 </a></li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>排行榜</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
+   <!-- <link rel="stylesheet" th:href="@{/framework/bootstrap.min.css}"/>-->
+    <!--//fonts-->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+<style>
+    .lst_type1 .ranking_top .num_ranking {
+        top: 26px;
+        left: 7px;
+        font-size: 56px;
+        color: #000;
+    }
+    .lst_type1 .ranking_top .pic_area {
+        position: absolute;
+        top: -38px;
+        right: 0;
+        left: auto;
+        width: 256px;
+        height: 256px;
+    }
+    .lst_type1 .ranking_top .summary {
+        overflow: hidden;
+        width: 310px;
+        max-height: 48px;
+        margin-top: 6px;
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+</style>
+</head>
+<body>
+<div th:replace="header::#top"></div>
+
+<!--排行榜-->
+<div class="ranking_lst top">
+    <div class="left_area NE=a:tgt">
+        <div class="title_area">
+            <h2>分类排行榜</h2>
+        </div>
+        <ul class="ranking_tab">
+            <!-- [D] 활성화된 li에 on클래스 추가 -->
+            <th:block th:each="category:${category}">
+            <li th:id="${category.id}"><a data-buried-obj="1" data-sc-name="PC_genre-rank-module_genre-rank-LOVE-choose-btn" th:href="@{/rank(categoryId=${category.id},ageId=1)}" class="NPI=a:,g:zh_CN_zh-hans">
+							<span th:text="${category.cyName}" >
+
+							</span>
+            </a></li>
+
+            </th:block>
+
+        </ul>
+
+        <!-- [D] 선택된 탭의 헤딩 태그 삽입(접근성) -->
+        <h3 class="blind">恋爱</h3>
+        <ul class="lst_type1">
+
+            
+             <th:block th:each="cartoon,cartoonStat:${cartoon}">
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_genre-rank-list-item" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=1)}" class="NPI=a:list,i=1328,r=2,g:zh_CN_zh-hans">
+                    <span class="num_ranking ico_n1_big" th:text="${cartoonStat.count}" style="display: none"></span>
+                    <div class="pic_area"><span class="num_ranking ico_n3" th:text="${cartoonStat.count}"></span><img th:src="${cartoon.ctUrl}" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_love" th:text="${cartoon.cyName}"></p>
+                        <p class="subj" th:text="${cartoon.ctName}"></p>
+                        <p class="author" th:text="${cartoon.ctAuthor}"></p>
+                        <p class="summary" style="opacity: 0"><span th:text="${cartoon.ctIntroduce}"></span></p>
+                    </div>
+                </a>
+            </li>
+
+            </th:block>
+
+        </ul>
+    </div>
+    <div class="right_area NE=a:tdt">
+        <div class="title_area">
+            <h2>年龄排行榜</h2>
+        </div>
+        <ul class="ranking_tab v2">
+            <!-- [D] 활성화된 li에 on클래스 추가 -->
+
+            <li class="on"><a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-10-MALE-btn" href="//www.dongmanmanhua.cn/top?rankingGenre=2&amp;target=MALE10" class="NPI=a:bym10,g:zh_CN_zh-hans">
+							<span>
+								10~20岁男生
+							</span>
+            </a></li>
+
+            <li><a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-10-FEMALE-btn" href="//www.dongmanmanhua.cn/top?rankingGenre=2&amp;target=FEMALE10" class="NPI=a:byf10,g:zh_CN_zh-hans">
+							<span>
+								10~20岁女生
+							</span>
+            </a></li>
+
+            <li><a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-20-MALE-btn" href="//www.dongmanmanhua.cn/top?rankingGenre=2&amp;target=MALE20" class="NPI=a:bym20,g:zh_CN_zh-hans">
+							<span>
+								20~30岁男生
+							</span>
+            </a></li>
+
+            <li><a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-20-FEMALE-btn" href="//www.dongmanmanhua.cn/top?rankingGenre=2&amp;target=FEMALE20" class="NPI=a:byf20,g:zh_CN_zh-hans">
+							<span>
+								20~30岁女生
+							</span>
+            </a></li>
+
+            <li><a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-30-MALE-btn" href="//www.dongmanmanhua.cn/top?rankingGenre=2&amp;target=MALE30" class="NPI=a:bym30,g:zh_CN_zh-hans">
+							<span>
+								30~40岁男生
+							</span>
+            </a></li>
+
+            <li><a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-30-FEMALE-btn" href="//www.dongmanmanhua.cn/top?rankingGenre=2&amp;target=FEMALE30" class="NPI=a:byf30,g:zh_CN_zh-hans">
+							<span>
+								30~40岁女生
+							</span>
+            </a></li>
+
+        </ul>
+
+        <!-- [D] 선택된 탭의 헤딩 태그 삽입(접근성) -->
+        <h3 class="blind">10~20岁男生</h3>
+        <ul class="lst_type1">
+            <!-- [D] 1위는 이미지가 background로 들어갑니다 -->
+            <li class="ranking_top">
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/CAMPUS/kanlianshidai/list?title_no=423" class="NPI=a:list,i=423,r=1,g:zh_CN_zh-hans">
+                    <span class="num_ranking ico_n1_big">1</span>
+                    <div class="pic_area"><img src="https://cdn.dongmanmanhua.cn/20150928_113/144344042903908Clw_JPEG/thumbnail_ipad.jpg?type=x-oss-process=image/quality,q_90" width="100%" height="100%" alt=""></div>
+                    <p class="icon_area">
+                    </p>
+                    <div class="info_area">
+                        <p class="genre g_campus">校园</p>
+                        <p class="subj">看脸时代</p>
+                        <p class="author">泰俊</p>
+                        <p class="summary"><span>全校最丑陋的男同学偶然得到了一具完美男神的身体，思维可以在两个身体间相互转换，他会如何改变分身所带来的各种意外事件？又养眼又现实的...</span></p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/SUSPENSE/zhuwo/list?title_no=1432" class="NPI=a:list,i=1432,r=1,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n2">2</span><img src="https://cdn.dongmanmanhua.cn/97f5db63-c8c0-45d7-aaee-41e12d14c7b9.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_suspense">悬疑</p>
+                        <p class="subj">猪窝</p>
+                        <p class="author">金坎比 / SICK</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/METROPOLIS/fistkiss/list?title_no=1393" class="NPI=a:list,i=1393,r=2,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n3">3</span><img src="https://cdn.dongmanmanhua.cn/63d8f6f8-23c6-4251-9a16-775c63769a8c.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_metropolis">都市</p>
+                        <p class="subj">1st Kiss</p>
+                        <p class="author">米沙/左小翎</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/FANTASY/change/list?title_no=1189" class="NPI=a:list,i=1189,r=3,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n4">4</span><img src="https://cdn.dongmanmanhua.cn/e31985b2-9740-472b-9171-6d145eb252cf.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"><span class="txt_ico_up2">UP</span></p>
+                    <div class="info_area">
+                        <p class="genre g_fantasy">奇幻</p>
+                        <p class="subj">Change - 变身</p>
+                        <p class="author">进元</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/COMEDY/shaoawodekaluli/list?title_no=1416" class="NPI=a:list,i=1416,r=4,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n5">5</span><img src="https://cdn.dongmanmanhua.cn/7704fabe-c373-45ce-8912-e9b7b917b34d.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_comedy">搞笑</p>
+                        <p class="subj">烧啊我的卡路里</p>
+                        <p class="author">常盘勇者</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/SUSPENSE/suyunjie18hao/list?title_no=1409" class="NPI=a:list,i=1409,r=5,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n6">6</span><img src="https://cdn.dongmanmanhua.cn/42f914cb-98b7-41da-9018-ba774ad42285.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_suspense">悬疑</p>
+                        <p class="subj">宿运街18号</p>
+                        <p class="author">光影漫道/HK/C先生</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/METROPOLIS/huayangkhouse/list?title_no=1323" class="NPI=a:list,i=1323,r=6,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n7">7</span><img src="https://cdn.dongmanmanhua.cn/58395f66-dade-4f35-93f7-3f6f285d433d.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_metropolis">都市</p>
+                        <p class="subj">花样K House</p>
+                        <p class="author">泰俊</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/FANTASY/deadlife/list?title_no=1358" class="NPI=a:list,i=1358,r=7,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n8">8</span><img src="https://cdn.dongmanmanhua.cn/6045a588-5246-462f-8e8e-38427d514c2c.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_fantasy">奇幻</p>
+                        <p class="subj">Dead Life</p>
+                        <p class="author">金星勋 / 林辰国</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/FANTASY/juexingbachanshiguan/list?title_no=1313" class="NPI=a:list,i=1313,r=8,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n9">9</span><img src="https://cdn.dongmanmanhua.cn/0f679cb2-8c2c-4caf-91ea-3629cde9fd96.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"></p>
+                    <div class="info_area">
+                        <p class="genre g_fantasy">奇幻</p>
+                        <p class="subj">觉醒吧，铲屎官！</p>
+                        <p class="author">孙齐皓 / ZHENA</p>
+                    </div>
+                </a>
+            </li>
+
+            <li>
+                <a data-buried-obj="1" data-sc-name="PC_genre-rank-module_age-rank-list-item" href="//www.dongmanmanhua.cn/BOY/jueding/list?title_no=1331" class="NPI=a:list,i=1331,r=9,g:zh_CN_zh-hans">
+                    <div class="pic_area"><span class="num_ranking ico_n10">10</span><img src="https://cdn.dongmanmanhua.cn/480438bd-0cf0-4026-94a9-7142332390eb.jpg?x-oss-process=image/resize,w_92,limit_0" width="92" height="98" alt=""></div>
+                    <p class="icon_area"><span class="txt_ico_up2">UP</span></p>
+                    <div class="info_area">
+                        <p class="genre g_boy">少年</p>
+                        <p class="subj">绝顶</p>
+                        <p class="author">肖新宇</p>
+                    </div>
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+<div th:replace="footer::#footer"></div>
+<script>
+ var li=  $('.lst_type1 li:first');
+  li.addClass("ranking_top");
+// $('.lst_type1 li:first a[data-sc-name] .pic_area').before('<span class="num_ranking ico_n1_big">1</span>');
+// $('.lst_type1 li:first a[data-sc-name] div.info_area').append('<p class="summary"><span>在恋爱中屡次碰壁的霍心漾，最终决定要去报复那些情场的感情骗子。打怪升级一路上来却遇见了终极对手，但是这位终极对手给人的感觉却亦正亦...</span></p>');
+//$('.lst_type1 li:first a[data-sc-name] .pic_area img').attr('src','/images/catgoryRank1.png');
+//$('.lst_type1 li:first a[data-sc-name] .pic_area span.num_ranking').css('color','#000');
+$('.lst_type1 li:first a[data-sc-name] div.info_area p.summary').css('opacity',1);
+ $('.lst_type1 li:first span.ico_n1_big').css('display','block');
+ $('.lst_type1 li:first .pic_area span.ico_n3').remove();
+$('.lst_type1 li:first a[data-sc-name] .pic_area img').attr('width','256px');
+ $('.lst_type1 li:first a[data-sc-name] .pic_area img').attr('height','256px');
+</script>
+</body>
+</html>

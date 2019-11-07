@@ -1,0 +1,79 @@
+server:
+  port: 8090
+  servlet:
+    context-path: /
+spring:
+  datasource:
+    #引入druid数据源
+    #面试题 您使用过的数据源 连接池 有哪些 性能的区别如何?
+    # c3p0 dpcp druid
+    #
+
+    type: com.alibaba.druid.pool.DruidDataSource
+    #数据库版本比较高  驱动包较低 连接会出问题  不兼容  下面URL后面必须要如果是高版本
+    driver-class-name:  com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/cartoon?serverTimezone=GMT%2B8&useUnicode=true&characterEncoding=utf8&autoReconnect=true&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    tomcat:
+      initSQL: SET NAMES utf8mb4 COLLATE utf8mb4_unicode_ci
+    #邮箱配置
+  mail:
+    host: smtp.163.com
+    username: 18229119068@163.com
+    password: q473721601
+    properties:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
+          required: true
+#  redis:
+#    host: 47.107.69.19
+#    port: 6379
+#    password: 473721601
+#    timeout: 100000
+#    jedis:
+#      pool:
+#        max-active: 5000
+#        max-wait: -1
+#        max-idle: 500
+#        min-idle: 5
+
+
+mybatis:
+  type-aliases-package: com.qgh.pojo #配置包的别名 以后默认别名是类名
+  mapper-locations: classpath:/mybatis/mappers/*.xml
+
+  #开启驼峰映射
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+#redis配置
+#spring.redis.host=47.107.69.19
+#spring.redis.port=6379
+#spring.redis.password=473721601
+##连接池最大连接数（使用负值表示没有限制）
+#spring.redis.jedis.pool.max-active=5000
+## 连接池最大阻塞等待时间（使用负值表示没有限制）
+#spring.redis.jedis.pool.max-wait=-1
+## 连接池中的最大空闲连接
+#spring.redis.jedis.pool.max-idle=500
+## 连接池中的最小空闲连接
+#spring.redis.jedis.pool.min-idle=5
+## 连接超时时间（毫秒）
+#spring.redis.timeout=100000
+
+#分页配置
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+
+#阿里云配置
+#AccessKeyId: LTAI4Fv9XxMZEVf8piMD9cA4
+#AccessKeySecret: ZsUJzGHcP3dSoNbdWVGn10W433F3Wv
+#Endpoint: https://oss-cn-shenzhen.aliyuncs.com
+#urlPreix: https://suyeq.oss-cn-shenzhen.aliyuncs.com/

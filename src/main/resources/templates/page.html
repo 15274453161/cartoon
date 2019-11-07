@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分页</title>
+</head>
+<body>
+<th:block id="top">
+<div class="page">
+
+    总共有:  <th:block th:text="${Pages}"></th:block>&nbsp;页
+    <span> <a class="prev" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}-1)}">&lt;&lt;</a></span>
+    当前页： <a class="num" href="" th:text="${currentPage}" style="margin-right: 10px;text-decoration: none"></a>
+    <span>  <a class="next" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}+1)}">&gt;&gt;</a></span>
+    <form th:action="@{/chaptor}" th:method="post" style="margin-top: 15px;">
+        <span>跳转到:   </span>
+        <input th:type="text" name="currentPage" style="width: 50px;">
+        <input th:type="hidden" name="cartoonId"  th:value="${cartoon.id}">
+        <input th:type="submit" name="page"  th:value="提交" style="width: 50px;">
+    </form>
+</div>
+</th:block>
+</body>
+</html>

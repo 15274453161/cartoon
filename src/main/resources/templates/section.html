@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link rel="stylesheet" th:href="@{/framework/bootstrap.min.css}"/>
+    <!--//fonts-->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+
+    <script type="text/javascript" th:src="@{/js/section.js}"></script>
+    <title>漫画节</title>
+
+    <link th:href="@{/css/section.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
+<style>
+
+</style>
+</head>
+<body>
+<!--引入头部-->
+<div th:replace="header::#top"></div>
+
+<!--显示本章漫画的内容-->
+<div id="content" class="viewer">
+    <div class="titleBox cls">
+
+        <h3 class="title"><span class="works">作品：</span> <a href="/">查看首页</a>
+            -
+            <a href="/web/topic/363" th:text="${cartoon.ctName}"></a>
+            -
+            <a th:text="${chaptor.chaptorName}"></a>
+        </h3>
+
+    </div>
+    <!--漫画内容-->
+
+    <div class="imgList" id="_viewweBox">
+        <th:block th:each="section:${section}">
+            <img noinit="true" class="img"
+                 th:data-src="${section.sectionUrl}"
+                 th:src="${section.sectionUrl}"
+                 lazy="loaded">
+        </th:block>
+    </div>
+    <!--更新点赞 -->
+    <p class="day_info _readComplete"><span class="txt_ico_up">更新</span>在周一更新</p>
+    <!--分页 -->
+    <div class="page">
+        <span> <a class="prev"
+                  th:href="@{/sectionPage/(chaptorId=${chaptorId}+1,cartoonId=${cartoonId},flag=1)}">上一页</a></span>
+        <span>  <a class="next"
+                   th:href="@{/sectionPage/(chaptorId=${chaptorId}-1,cartoonId=${cartoonId},flag=0)}">下一页</a></span>
+    </div>
+    <div class="cont_box" id="_bottomDisplay">
+
+        <div class="comment_area">
+
+
+            <div id="cbox_module" class="u_cbox">
+                <div class="u_cbox_wrap u_cbox_zh-hans">
+                    <div class="u_cbox_head"><h5 class="u_cbox_title">评论</h5><span class="u_cbox_count">312 </span>
+                    </div>
+                    <div class="u_cbox_write_wrap" style="display: block;">
+                        <div class="u_cbox_write_box">
+                            <form >
+                                <fieldset>
+                                    <legend class="u_vc">写评论</legend>
+                                    <div class="u_cbox_write">
+                                        <div class="u_cbox_write_inner">
+                                            <div class="u_cbox_write_area"><strong class="u_vc">写评论</strong>
+                                                <div class="u_cbox_inbox"><textarea data-buried-obj="0"
+                                                                                    data-sc-name="PC_read-page_comment-input"
+                                                                                    id="cbox_module__write_textarea"
+                                                                                    class="u_cbox_text" rows="3"
+                                                                                    cols="30"
+                                                                                    onfocus="textareaFunFocus()"
+                                                                                    onblur="textareaFunBlur()"></textarea><label
+                                                        id="t1"
+                                                        for="cbox_module__write_textarea" class="u_cbox_guide">这里是公共留言区域，请再次确认评论是否包含让他人感到不适的内容。</label>
+                                                </div>
+                                            </div>
+                                            <div class="u_cbox_upload_image" style="display:none"><span
+                                                    class="u_cbox_upload_image_wrap fileButton browsebutton _cboxImageSelect"><span
+                                                    class="u-cbox-browse-box"><input class="u-cbox-browse-file-input"
+                                                                                     type="file" name="browse"
+                                                                                     accept="image/*"
+                                                                                     title="添加图片"></span><a href="#"
+                                                                                                            class="u_cbox_upload_thumb_link u-cbox-browse-button"
+                                                                                                            data-log="RPP.add"><span
+                                                    class="u_cbox_upload_thumb_add">添加图片</span><span
+                                                    class="u_cbox_upload_thumb_mask"></span></a></span></div>
+                                            <div class="u_cbox_upload_sticker" style="display:none"></div>
+                                            <div class="u_cbox_write_count"><span class="u_vc">现在填入的字数</span><strong
+                                                    class="u_cbox_count_num">0</strong>/<span
+                                                    class="u_vc">现在填入的字数</span><span
+                                                    class="u_cbox_write_total">500</span></div>
+                                            <div class="u_cbox_upload">
+                                                <div class="u_cbox_addition"></div>
+                                                <button type="button" class="u_cbox_btn_upload" id="topButton"><span
+                                                        class="u_cbox_ico_upload"></span><span
+                                                        class="u_cbox_txt_upload">发送</span></button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="u_cbox_sort"><strong class="u_vc">选择排列评论的选项</strong>
+                        <div class="u_cbox_sort_option">
+                            <div class="u_cbox_sort_scroller">
+                                <ul class="u_cbox_sort_option_list">
+                                    <li class="u_cbox_sort_option_wrap favorite "><a data-buried-obj="1"
+                                                                                     data-sc-name="PC_read-page_sort-hot-favorite-btn"
+                                                                                     href="javascript:void(0)"
+                                                                                     data-action="sort#request"
+                                                                                     data-param="favorite"
+                                                                                     class="u_cbox_select"><span
+                                            class="u_cbox_ico_select"></span><span class="u_cbox_sort_label">按热度</span></a>
+                                    </li>
+                                    <li class="u_cbox_sort_option_wrap new u_cbox_sort_option_on"><a data-buried-obj="1"
+                                                                                                     data-sc-name="PC_read-page_sort-hot-new-btn"
+                                                                                                     href="javascript:void(0)"
+                                                                                                     data-action="sort#request"
+                                                                                                     data-param="new"
+                                                                                                     class="u_cbox_select"><span
+                                            class="u_cbox_ico_select"></span><span class="u_cbox_sort_label">按时间</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u_cbox_content_wrap">
+                        <ul class="u_cbox_list">
+                            <th:block th:each="com:${comment}">
+                                <!--commentTime commentContent userName userId-->
+                                <li class="u_cbox_comment cbox_module__comment_best_5d62b411bc011b30f89778e3 _user_id_no_becb33c0-ad39-11e9-ba06-00163e069c9c"
+                                    data-info="commentNo:5d62b411bc011b30f89778e3,deleted:false,best:true,visible:true,secret:false,manager:false,mine:false">
+                                    <div class="u_cbox_comment_box">
+                                        <div class="u_cbox_area">
+                                            <div class="u_cbox_info"><span
+                                                    class="u_cbox_info_main"> 					<span
+                                                    class="u_cbox_name"> 						<span
+                                                    class="u_cbox_name_area"> 							<span th:data="${com.id}"
+                                                    class="u_cbox_nick_area"> 								<span
+                                                    class="u_cbox_nick" th:text="${com.userName}"><!--↪️玄硕在烈♡--></span> 							</span> 						</span> 					</span> 				</span>
+                                                <span class="u_cbox_info_sub"> 					 				</span>
+                                            </div>
+                                            <div class="u_cbox_text_wrap"><span class="u_cbox_ico_best">BEST</span>
+                                                <span class="u_cbox_contents" th:text="${com.commentContent}"></span>
+                                            </div>
+                                            <div class="u_cbox_info_base"><span class="u_cbox_date"
+                                                                                data-value="2019-08-26 00:15:13"
+                                                                                th:text="${com.commentTime}"> 	</span>
+                                                <span class="u_cbox_work_main"> 										<a
+                                                        href="javascript:void(0);" class="u_cbox_btn_report"
+                                                        data-param="5d62b411bc011b30f89778e3"> 						<span
+                                                        class="u_cbox_ico_bar"></span> 						<span
+                                                        class="u_cbox_ico_report"></span> 											</a> 					 					 				</span>
+                                            </div>
+                                            <div class="u_cbox_tool"><a onclick="commentFun(this)" th:id="${com.id}" class="u_cbox_btn_reply"
+                                                                        href="javascript:void(0)"
+                                                                        data-param="commentNo:5d62b411bc011b30f89778e3,isBest:true">
+                                                <strong class="u_cbox_reply_txt"> 回复 </strong> <span
+                                                    class="u_cbox_reply_cnt" th:text="${com.childLength}"></span> </a>
+                                                <div class="u_cbox_recomm_set"><strong class="u_vc">赞同/不赞同</strong> <a
+                                                        data-buried-obj="1"
+                                                        data-sc-name="PC_read-page_appreciate-comment-btn"
+                                                        href="javascript:void(0)"
+                                                        data-param="mine:false,commentNo:5d62b411bc011b30f89778e3,titleNo:1385,episodeNo:19"
+                                                        class="u_cbox_btn_recomm" title="赞同"> <span
+                                                        class="u_cbox_ico_recomm" onclick="zan(this)" >赞同</span> <em
+                                                        class="u_cbox_cnt_recomm" th:text="${com.zan}"></em>
+                                                </a></div>
+                                            </div>
+                                            <span class="u_cbox_comment_frame"> 				<span
+                                                    class="u_cbox_ico_tip"></span> 				<span
+                                                    class="u_cbox_comment_frame_top"> 					<span
+                                                    class="u_cbox_comment_bg_r"></span> 					<span
+                                                    class="u_cbox_comment_bg_l"></span> 				</span> 				<span
+                                                    class="u_cbox_comment_frame_bottom"> 					<span
+                                                    class="u_cbox_comment_bg_r"></span> 					<span
+                                                    class="u_cbox_comment_bg_l"></span> 				</span> 			</span>
+                                        </div>
+                                    </div>
+                                    <!-- 评论回复-->
+
+                                    <div class="u_cbox_reply_area" style="display: none;">
+                                        <div class="u_cbox_content_wrap">
+                                            <ul class="u_cbox_list">
+                                                <th:block th:each="replay:${com.commentList}">
+                                                <li class="u_cbox_comment cbox_module__comment_5d62ce7fb37f325c84e3f736 _user_id_no_bf3f7de0-ae40-11e9-ba06-00163e069c9c"
+                                                    data-info="commentNo:5d62ce7fb37f325c84e3f736,deleted:false,best:false,visible:true,secret:false,manager:false,mine:false">
+                                                    <div class="u_cbox_comment_box"><span
+                                                            class="u_cbox_ico_reply"></span>
+                                                        <div class="u_cbox_area">
+                                                            <div class="u_cbox_info"><span class="u_cbox_info_main"> 					<span
+                                                                    class="u_cbox_name"> 						<span
+                                                                    class="u_cbox_name_area"> 							<span
+                                                                    class="u_cbox_nick_area"> 								<span
+                                                                    class="u_cbox_nick" th:text="${replay.userName}"></span> 							</span> 						</span> 					</span> 				</span>
+                                                                <span class="u_cbox_info_sub"> 					 				</span>
+                                                            </div>
+                                                            <div class="u_cbox_text_wrap"><span
+                                                                    class="u_cbox_contents" th:text="${replay.commentContent}"></span></div>
+                                                            <div class="u_cbox_info_base"><span class="u_cbox_date"
+                                                                                                data-value="2019-08-26 02:07:59" th:text="${replay.commentTime}"> 									</span>
+                                                                <span class="u_cbox_work_main"> 										<a
+                                                                        href="javascript:void(0);"
+                                                                        class="u_cbox_btn_report"
+                                                                        data-param="5d62ce7fb37f325c84e3f736"> 						<span
+                                                                        class="u_cbox_ico_bar"></span> 						<span
+                                                                        class="u_cbox_ico_report"></span> 						<span
+                                                                        class="u_cbox_in_report">举报</span> 					</a> 					 					 				</span>
+                                                            </div>
+                                                            <div class="u_cbox_tool">
+                                                                <div class="u_cbox_recomm_set"><strong
+                                                                        class="u_vc">赞同/不赞同</strong> <a
+                                                                        data-buried-obj="1"
+                                                                        data-sc-name="PC_read-page_appreciate-comment-btn"
+                                                                        href="javascript:void(0)"
+                                                                        data-param="mine:false,commentNo:5d62ce7fb37f325c84e3f736,titleNo:1385,episodeNo:19"
+                                                                        class="u_cbox_btn_recomm"
+                                                                        title="赞同"> <span
+                                                                        class="u_cbox_ico_recomm">赞同</span> <em
+                                                                        class="u_cbox_cnt_recomm">3</em> </a></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                </th:block>
+                                            </ul>
+                                        </div>
+                                       <div class="u_cbox_write_wrap"  ><span class="u_cbox_ico_reply"></span>
+                                            <div class="u_cbox_write_box">
+                                                <form>
+                                                    <fieldset>
+                                                        <legend class="u_vc">写评论</legend>
+                                                        <div class="u_cbox_write">
+                                                            <div class="u_cbox_write_inner">
+                                                                <div class="u_cbox_write_area"><strong
+                                                                        class="u_vc">写评论</strong>
+                                                                    <div class="u_cbox_inbox"><textarea
+                                                                            data-buried-obj="0"
+                                                                            data-sc-name="PC_read-page_comment-input"
+                                                                            th:id="${com.id+'a'}"
+                                                                            class="u_cbox_text"
+                                                                            rows="3"
+                                                                            cols="30" onblur="textareaFunBlur()"
+                                                                            onfocus="textareaFunFocus()"></textarea><label
+                                                                            th:for="${com.id+'a'}"
+                                                                            class="u_cbox_guide">这里是公共留言区域，请再次确认评论是否包含让他人感到不适的内容。</label>
+                                                                    </div>
+                                                                </div>
+
+                                                                    <button type="button" th:id="${com.id}"
+                                                                            class="u_cbox_btn_upload" onclick="replay(this)"><span
+                                                                            class="u_cbox_ico_upload"></span><span
+                                                                            class="u_cbox_txt_upload">发送</span></button>
+                                                                </div>
+                                                            </div>
+                                                       <!-- </div>-->
+                                                    </fieldset>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </th:block>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="clearLeft" style="clear: both"></div>
+
+    </div>
+
+    <!--   分页-->
+
+    <div class="page">
+        <span> <a class="prev"
+                  th:href="@{/sectionPage/(chaptorId=${chaptorId}+1,cartoonId=${cartoonId},flag=1)}">&lt&lt</a></span>
+        <span>  <a class="next"
+                   th:href="@{/sectionPage/(chaptorId=${chaptorId}-1,cartoonId=${cartoonId},flag=0)}">&gt&gt</a></span>
+    </div>
+
+
+    <input id="isZan" value="0">
+
+    <!--评论回复-->
+    <script type="text/javascript">
+
+         function commentFun(thisA) {
+
+
+             //获取当前标签class里面的值
+             var ulist = $("#"+thisA.id).attr("class");
+
+             if (ulist == 'u_cbox_btn_reply') {
+
+                 $("#"+thisA.id).parent().parent().parent().parent().children().eq(1).css('display','block');
+
+                 $("#"+thisA.id).addClass("u_cbox_btn_reply_on");
+
+             } else {
+
+                 $("#"+thisA.id).parent().parent().parent().parent().children().eq(1).css('display','none');
+
+                 $("#"+thisA.id).removeClass("u_cbox_btn_reply_on");
+
+             }
+
+        }
+
+
+
+    </script>
+
+    <!--顶级评论
+    1、判断是否登录
+    2、判断是否输入
+    3、传递参数：内容、评论人、评论章节-->
+    <script type="text/javascript">
+
+        var chaptorId=[[${chaptorId}]];
+        var userId=$("#userInfor").val();
+
+        $('#topButton').click(function () {
+            var content=$('#cbox_module__write_textarea').val();
+           if (content==''){
+               alert("未输入内容");
+               return ;
+           }
+            $.ajax({
+                url:"/publishComment",
+                type:'post',
+                async:false,
+                data:{
+                    content:content,
+                    chaptorId:chaptorId,
+                    userId: userId,
+                    replay:0
+                },
+                success:function(data){
+                    var obj=data[0];
+                    console.log(data[data.length-1])
+                    var html='<li class="u_cbox_comment cbox_module__comment_best_5d62b411bc011b30f89778e3 _user_id_no_becb33c0-ad39-11e9-ba06-00163e069c9c" data-info="commentNo:5d62b411bc011b30f89778e3,deleted:false,best:true,visible:true,secret:false,manager:false,mine:false">\n' +
+                        '                                    <div class="u_cbox_comment_box">\n' +
+                        '                                        <div class="u_cbox_area">\n' +
+                        '                                            <div class="u_cbox_info"><span class="u_cbox_info_main"> \t\t\t\t\t<span class="u_cbox_name"> \t\t\t\t\t\t<span class="u_cbox_name_area"> \t\t\t\t\t\t\t<span data="25" class="u_cbox_nick_area"> \t\t\t\t\t\t\t\t<span class="u_cbox_nick">'+obj.userName+'</span> \t\t\t\t\t\t\t</span> \t\t\t\t\t\t</span> \t\t\t\t\t</span> \t\t\t\t</span>\n' +
+                        '                                                <span class="u_cbox_info_sub"> \t\t\t\t\t \t\t\t\t</span>\n' +
+                        '                                            </div>\n' +
+                        '                                            <div class="u_cbox_text_wrap"><span class="u_cbox_ico_best">BEST</span>\n' +
+                        '                                                <span class="u_cbox_contents">'+obj.commentContent+'</span>\n' +
+                        '                                            </div>\n' +
+                        '                                            <div class="u_cbox_info_base"><span class="u_cbox_date" data-value="2019-08-26 00:15:13">'+obj.commentTime+'</span>\n' +
+                        '                                                <span class="u_cbox_work_main"> \t\t\t\t\t\t\t\t\t\t<a href="javascript:void(0);" class="u_cbox_btn_report" data-param="5d62b411bc011b30f89778e3"> \t\t\t\t\t\t<span class="u_cbox_ico_bar"></span> \t\t\t\t\t\t<span class="u_cbox_ico_report"></span> \t\t\t\t\t\t\t\t\t\t\t</a> \t\t\t\t\t \t\t\t\t\t \t\t\t\t</span>\n' +
+                        '                                            </div>\n' +
+                        '                                            <div class="u_cbox_tool"><a onclick="commentFun(this)" id='+obj.id+' class="u_cbox_btn_reply" href="javascript:void(0)" data-param="commentNo:5d62b411bc011b30f89778e3,isBest:true">\n' +
+                        '                                                <strong class="u_cbox_reply_txt"> 回复 </strong> <span class="u_cbox_reply_cnt">0</span> </a>\n' +
+                        '                                                <div class="u_cbox_recomm_set"><strong class="u_vc">赞同/不赞同</strong> <a data-buried-obj="1" data-sc-name="PC_read-page_appreciate-comment-btn" href="javascript:void(0)" data-param="mine:false,commentNo:5d62b411bc011b30f89778e3,titleNo:1385,episodeNo:19" class="u_cbox_btn_recomm" title="赞同"> <span class="u_cbox_ico_recomm" onclick="zan(this)">赞同</span> <em class="u_cbox_cnt_recomm">0</em>\n' +
+                        '                                                </a></div>\n' +
+                        '                                            </div>\n' +
+                        '                                            <span class="u_cbox_comment_frame"> \t\t\t\t<span class="u_cbox_ico_tip"></span> \t\t\t\t<span class="u_cbox_comment_frame_top"> \t\t\t\t\t<span class="u_cbox_comment_bg_r"></span> \t\t\t\t\t<span class="u_cbox_comment_bg_l"></span> \t\t\t\t</span> \t\t\t\t<span class="u_cbox_comment_frame_bottom"> \t\t\t\t\t<span class="u_cbox_comment_bg_r"></span> \t\t\t\t\t<span class="u_cbox_comment_bg_l"></span> \t\t\t\t</span> \t\t\t</span>\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '                                    <!-- 评论回复-->\n' +
+                        '\n' +
+                        '                                    <div class="u_cbox_reply_area" style="display: none;">\n' +
+                        '                                        <div class="u_cbox_content_wrap">\n' +
+                        '                                            <ul class="u_cbox_list">\n' +
+                        '\n' +
+                        '                                            </ul>\n' +
+                        '                                        </div>\n' +
+                        '                                       <div class="u_cbox_write_wrap"><span class="u_cbox_ico_reply"></span>\n' +
+                        '                                            <div class="u_cbox_write_box">\n' +
+                        '                                                <form>\n' +
+                        '                                                    <fieldset>\n' +
+                        '                                                        <legend class="u_vc">写评论</legend>\n' +
+                        '                                                        <div class="u_cbox_write">\n' +
+                        '                                                            <div class="u_cbox_write_inner">\n' +
+                        '                                                                <div class="u_cbox_write_area"><strong class="u_vc">写评论</strong>\n' +
+                        '                                                                    <div class="u_cbox_inbox"><textarea data-buried-obj="0" data-sc-name="PC_read-page_comment-input" id="25a" class="u_cbox_text" rows="3" cols="30" onblur="textareaFunBlur()" onfocus="textareaFunFocus()"></textarea><label for="25a" class="u_cbox_guide" style="">这里是公共留言区域，请再次确认评论是否包含让他人感到不适的内容。</label>\n' +
+                        '                                                                    </div>\n' +
+                        '                                                                </div>\n' +
+                        '\n' +
+                        '                                                                    <button type="button" id="25" class="u_cbox_btn_upload" onclick="replay(this)"><span class="u_cbox_ico_upload"></span><span class="u_cbox_txt_upload">发送</span></button>\n' +
+                        '                                                                </div>\n' +
+                        '                                                            </div>\n' +
+                        '                                                       <!-- </div>-->\n' +
+                        '                                                    </fieldset>\n' +
+                        '                                                </form>\n' +
+                        '                                            </div>\n' +
+                        '                                        </div>\n' +
+                        '                                    </div>\n' +
+                        '                                </li>'
+
+                    /*
+
+                    */
+                    $('.u_cbox_list').prepend(html);
+
+                    /**
+                     * 清空输入框
+                     */
+                    $('#cbox_module__write_textarea').val('');
+                },
+                error:function(){
+
+                },
+            });
+
+        });
+
+    <!--评论回复 1、判断是否输入 2、ajax发送到后端-->
+
+        function replay($this) {
+
+            var replayButtonId=$($this).attr('id');
+
+            console.log(replayButtonId);
+            var replayText=$('#'+replayButtonId+'a').val();
+            console.log(replayText);
+            if (replayText==''){
+                alert("填入到1个字以上，才能上传留言。");
+                return ;
+            }
+          /* var father=$($this).parent().parent().parent().parent().parent().parent().parent().parent().children(0).children(0).children(0).children(0).children(0).children(0).children(0).attr('data');*/
+            var replay=$($this).parent().parent().parent().parent().parent().parent().parent().parent().find('.u_cbox_nick_area').attr('data');
+            console.log('父亲： '+replay);
+            $.ajax({
+                url:"/publishComment",
+                type:'post',
+                async:false,
+                data:{
+                    content:replayText,
+                    chaptorId:chaptorId,
+                    userId: userId,
+                    replay:replay
+                },
+                success:function(data){
+
+                    console.log(data)
+                   /*
+                     * 清空输入框
+                   */
+                    $('#'+replayButtonId+'a').val('');
+                },
+                error:function(){
+
+                },
+            });
+        }
+
+    </script>
+     <!--点赞-->
+    <script>
+        /*点赞之前的判断是否登录*/
+      $('.u_cbox_ico_recomm').click(function () {
+          var userId=$('#userInfor').val();
+          if (userId==0){
+              // window.location.href='http://localhost:8090/account-login-show';
+              alert("please login");
+              console.log("please login");
+
+          }
+      })  
+        /* 使用ajax1：参数：被点赞者的id : */
+      function  zan($this){
+      var zan= $($this).next();
+      var zanNum=parseInt(zan.html());
+      var isZan=$('#isZan').val();
+      console.log(isZan);
+      var commentId=$($this).parent().parent().parent().parent().find('.u_cbox_nick_area').attr('data');
+      //console.log(commentId);
+      if (!judgeZan()) {//没点过赞
+          zanNum--;//
+          $('#isZan').val(0);//将值设为点赞人的id
+          zan.html(zanNum);
+          zan.css('color','#bbbcbf');
+          $($this).css('background-image','url(/images/dianzan.png);');
+      }else{
+          zanNum++;//
+          $('#isZan').val($("#userInfor").val());//将值设为0
+          zan.html(zanNum);
+          zan.css('color','#05f269');
+          $($this).css('background-image','url(/images/zanBy.png);');
+      }
+
+          // console.log(zanNum);
+           //console.log($($this).attr('class'));
+
+           $.ajax({
+               url:"/commentZan",
+               type:'POST',
+               async:false,
+               data:{
+                   zanNum:zanNum,
+                   commentId:commentId
+               },
+               success:function (data) {
+
+               },
+               error:function () {
+
+               }
+
+           })
+      }
+
+      function judgeZan() {
+          var zan=$('#isZan').val();
+          if(zan!=0){//没点赞 ==0
+              console.log('取消')
+              return false;
+          }
+          console.log('点赞')
+          return true;
+      }
+    </script>
+
+</div>
+<div th:replace="footer::#footer"></div>
+</body>
+</html>

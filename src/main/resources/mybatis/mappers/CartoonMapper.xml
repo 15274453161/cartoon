@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qgh.dao.CartoonDao">
+
+    <!--1、部分插入漫画名称、作者、类型、点赞数-->
+    <insert id="addCartoon" parameterType="com.qgh.pojo.Cartoon">
+        insert into cartoon(ct_name,ct_author,ct_cy_id,ct_wk_id,ct_introduce,ct_title_no) values (#{ctName},#{ctAuthor},#{ctCyId},#{ctWkId},#{ctIntroduce},#{ctTitleNo})
+    </insert>
+	<!--查询漫画所有信息-->
+    <select id="selectAll" resultType="com.qgh.pojo.Cartoon">
+        select * from cartoon;
+    </select>
+
+    <!--新增漫画地址-->
+    <update id="updatePcUrl" >
+        update cartoon
+        <set>
+            ct_url=#{ctUrl}
+        </set>
+        where id=#{id}
+    </update>
+<!--首页里面查询出的前八条漫画内容-->
+    <select id="indexEight" resultType="com.qgh.pojo.Cartoon">
+        select * from cartoon ct,category cy WHERE ct.ct_cy_id=cy.id and ct.ct_wk_id=#{weekId} limit 8
+    </select>
+
+    <!--根据周末划分漫画-->
+    <select id="selectById" resultType="com.qgh.pojo.Cartoon">
+        select * from cartoon
+
+        WHERE id=#{cartId}
+    </select>
+
+    <!--根据漫画名称模糊查询漫画-->
+
+    <select id="searchCartoonByName" resultType="com.qgh.pojo.Cartoon">
+        select *
+        from cartoon ct,category cy
+        WHERE ct.ct_cy_id=cy.id
+        AND ct.ct_name like CONCAT('%',#{cartoonName},'%')
+    </select>
+<!--排行榜根据分类id -->
+
+    <select id="rankByCyId" resultType="com.qgh.pojo.Cartoon">
+        select * from cartoon ct,category cy WHERE ct.ct_cy_id=cy.id AND ct.ct_cy_id=#{cyId}  order by ct_score limit 10
+    </select>
+</mapper>

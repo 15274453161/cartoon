@@ -1,0 +1,27 @@
+注册
+使用邮箱注册、点击按钮发送手机号到后台
+前端收到验证码开始注册
+注册时：1、判断验证码是否正确  
+2、判断该邮箱是否已经注册过
+3、注册过返回提示
+4、没有注册 开始注册
+
+
+错误集：日期哪儿转换
+如果查询类使我们自己写，那么在属性前面加上@DateTimeFormat(pattern = "yyyy-MM-dd")  ，即可将String转换为Date类型，如下
+
+@DateTimeFormat(pattern = "yyyy-MM-dd")  
+private Date createTime;  
+
+　6、date类型转换为json字符串时，返回的是long time值，如果需要返回指定的日期的类型的get方法上写上@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8") ，即可将json返回的对象为指定的类型。
+
+@DateTimeFormat(pattern="yyyy-MM-dd HH:mm:ss")  
+@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")  
+public Date getCreateTime() {  
+return this.createTime;  
+}  
+
+登录步骤：
+1、判断用户名和密码是否错误
+
+@{/}  映射必须/ 相当于定位到项目的跟路径

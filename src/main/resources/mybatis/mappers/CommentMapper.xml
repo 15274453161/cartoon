@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qgh.dao.CommentDao">
+
+    <select id="showAll" resultType="com.qgh.pojo.Comment">
+       select *
+       from comment c,user u
+       where
+       chaptor_id=#{chaptorId} AND c.user_id=u.id AND replay=0 ORDER BY  comment_time desc
+    </select>
+
+    <insert id="insertComment" parameterType="com.qgh.pojo.Comment">
+        insert into comment(comment_time,comment_content,user_id,chaptor_id,replay)
+         values (#{commentTime},#{commentContent},#{userId},#{chaptorId},#{replay})
+    </insert>
+
+
+    <!--循环的查询-->
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into comment(comment_time,comment_content,user_id,chaptor_id,replay)
+         values 
+         <foreach collection="list" item="com" separator=",">
+             (#{com.commentTime},#{com.commentContent},#{com.userId},#{com.chaptorId},#{com.replay})
+         </foreach>
+
+    </insert>
+
+    <!--根据评论id查询其孩子评论-->
+    <select id="showChild" resultType="com.qgh.pojo.Comment">
+       select *
+       from comment c,user u
+       where
+       replay=#{commentId} AND c.user_id=u.id
+    </select>
+    <!--根据用户id更新评论点赞表-->
+    <update id="addZan" >
+        update comment set zan=#{zan} where id=#{commentId}
+    </update>
+
+</mapper>
