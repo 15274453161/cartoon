@@ -46,7 +46,7 @@ public class ChaptorUtil {
 
            chaptor.setChaptorUrl(img.attr("data-src"));
             //获得当前漫画章节名称
-           Elements title= all.select(".title").select("span");
+            Elements title= all.select(".title").select("span");
 
             chaptor.setChaptorName(title.text());
 

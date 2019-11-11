@@ -28,12 +28,12 @@ spring:
         starttls:
           enable: true
           required: true
-  #配置页面
-  thymeleaf:
-    prefix: classpath:/templates/
-    suffix: .html
-    mode: HTML5
-    encoding: UTF-8
+#  #配置页面
+#  thymeleaf:
+#    prefix: classpath:/templates/
+#    suffix: .html
+#    mode: HTML5
+#    encoding: UTF-8
 
 
 

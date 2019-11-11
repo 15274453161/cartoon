@@ -30,8 +30,8 @@
         <div class="information_box clearfix">
             <div class="man_id"><i></i>充值账户：<a class="col_red" href="http://user.u17.com" target="_blank"
                                                th:text="${userAccount}"></a></div>
-            <div class="man_balance"><i></i>账户余额：<span class="col_red">0</span>妖气币 <a class="col_yellow underline ml10"
-                                                                                      href="http://user.u17.com/recharge/recharge.php"
+            <div class="man_balance"><i></i>账户余额：<span class="col_red" th:text="${dongNum}"></span>咚币 <a class="col_yellow underline ml10"
+                                                                                      th:href="@{/record/(pageNo=1)}"
                                                                                       target="_blank">充值记录</a></div>
         </div>
     </div>
@@ -61,7 +61,7 @@
                         padding-top: 10px;
                     }
                 </style>
-                <form method="post" th:action="@{/alipay/page/gotoPayPage}">
+                <form method="post" th:action="@{/alipay/page/gotoPayPage}" onsubmit="return validate_form()">
 
 
 
@@ -168,8 +168,7 @@
                     </div>
                     <div class="ml110 mt10" id="toll_ok_btn">
                         <button type="submit" onclick="form_commit()">下一步</button>
-                       <!-- <a id="btn_next" class="next_btn hands" title="下一步" onclick="form_commit()"><span
-                                class="next_span">下一步</span></a>-->
+
 
                     </div>
                 </form>
@@ -203,11 +202,6 @@
                 console.log(userId)
 
                 function form_commit() {
-                    //1、判断用户是否登录
-                    if (check_user() == false) {
-                        alert("请先登录...")
-                        return false;
-                    }
 
                     //获取用户id 所支付金额 、 所得咚币数量
                     var userId = userId;
@@ -219,26 +213,6 @@
                     $('#pay_money').val(payMoney);
                     $('#dong_num').val(dongNum);
 
-
-
-                    /*$.ajax({
-                        url:"/alipay/page/gotoPayPage",
-                        type:"POSt",
-
-
-                        data:{
-                            userId: userId,
-                            payMoney:payMoney,
-                            dongNum:dongNum
-                        },
-                        success:function (data) {
-                    console.log(data)
-                        },
-                        error:function () {
-
-                        },
-
-                    })*/
                 }
 
                 //检查用户是否登录
@@ -249,6 +223,26 @@
                     }
                     return true;
                 }
+
+                //form表单的校验
+              function  validate_form(){
+                  //1、判断用户是否登录
+                  return alertLogin();
+              }
+
+              //登录弹框
+                function alertLogin(){
+                    if (check_user() == false) {
+                        alert("请先登录...")
+                        return false;
+                    }
+                    return true;
+                }
+              
+              //充值记录前判断是否登录
+              $('.col_yellow').click(function () {
+                 return  alertLogin();
+              })
             </script>
             <div id="notice_box" class="notice" style="display: none;"></div>
         </div>

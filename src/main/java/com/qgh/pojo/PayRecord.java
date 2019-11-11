@@ -19,5 +19,7 @@ public class PayRecord {
     private double payMoney;
     private int dongNum;
 
+    private String userName;
+
 
 }

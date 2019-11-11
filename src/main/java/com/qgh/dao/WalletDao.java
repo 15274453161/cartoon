@@ -11,5 +11,10 @@ import com.qgh.pojo.Wallet;
  * @time 15:31
  */
 public interface WalletDao {
-    void addWallet(Wallet  wallet);
+    void addWallet(Wallet  wallet);//第一次充值会员
+    void updateWallet(Wallet  wallet);//不是第一次充值会员
+    Wallet findUserId(int userId);
+
+
+
 }

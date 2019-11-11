@@ -40,9 +40,7 @@ public class ChaptorsServiceImpl implements ChaptorsService {
         }
         PageHelper.startPage(pageNo, 10);
         Page<Chaptors> chaptorList =chaptorDao.searchPage(ctId);
-        System.out.println("pageNum: "+chaptorList.getPageNum()+",total: "+chaptorList.getTotal());
-        System.out.println("getPages: "+chaptorList.getPages());
-        System.out.println("查询出的章节数："+chaptorList);
+
         return Result.SUCCESS(chaptorList.getResult(), chaptorList.getPageNum(),chaptorList.getPages());
     }
 

@@ -25,7 +25,7 @@ public class UserInfor {
             model.addAttribute("userId",((User)obj).getId());
 
             model.addAttribute("userAccount",((User)obj).getUserName());
-            System.out.println(((User)obj).getUserName());
+
         }else{
             //没有登录
             model.addAttribute("userId",0);

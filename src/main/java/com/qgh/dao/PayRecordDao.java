@@ -1,9 +1,10 @@
 package com.qgh.dao;
 
+import com.github.pagehelper.Page;
 import com.qgh.pojo.PayRecord;
-import com.qgh.util.result.Result;
 
 public interface PayRecordDao {
 
-   Result addPayRecord(PayRecord payRecord);
+   void addPayRecord(PayRecord payRecord);
+   Page<PayRecord> searchAllByUserId(int userId);
 }

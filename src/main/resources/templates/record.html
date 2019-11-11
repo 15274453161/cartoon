@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>充值记录表格</title>
+    <!--css-->
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
+
+    <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+
+    <!--//fonts-->
+    <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
+    <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+<style>
+    .content{
+    text-align: center;
+    }
+    .content table{
+        display: inline-block;
+        margin:0 auto;
+        margin: 50px;
+    }
+    .content table th,td{
+       padding: 5px 10px;
+        text-align: center;
+    }
+    .content table caption{
+        color: red;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 8px 12px;
+    }
+    .page {
+        height: 30px;
+        display: table;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+
+    .page span {
+
+        margin-right: 10px;
+        width: 20px;
+        height: 25px;
+        line-height:25px;
+        border:1px solid #444;
+        border-radius: 6px;
+        padding: 5px;
+        background-color: #8b00e9;
+        color: #fff;
+    }
+    .page span a{
+        color: #fff;
+    }
+</style>
+</head>
+<body>
+<div th:replace="header::#top"></div>
+<div class="content">
+<table border="1">
+    <caption>充值记录</caption>
+    <thead>
+    <tr>
+        <th>序号</th>
+        <th>订单编号</th>
+        <th>用户账户</th>
+        <th>支付时间</th>
+        <th>支付金额</th>
+        <th>所得咚币</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <th:block th:each="record,iterStat:${record.getMsg()}">
+    <tr >
+        <td th:text="${iterStat.count}"></td>
+        <td th:text="${record.oderNumber}"></td>
+        <td th:text="${record.userName}"></td>
+        <td th:text="${record.payTime}"></td>
+        <td th:text="${record.payMoney}"></td>
+        <td th:text="${record.dongNum}"></td>
+    </tr>
+    </th:block>
+    </tbody>
+</table>
+</div>
+
+
+    <div class="page" style="margin-bottom: 20px;">
+
+        总共有:  <th:block th:text="${record.pages}"></th:block>&nbsp;页
+        <span> <a class="prev" th:href="@{/record/(pageNo=${record.pageSize}-1)}">&lt;&lt;</a></span>
+        当前页： <a class="num" href="" th:text="${record.pageSize}" style="margin-right: 10px;text-decoration: none"></a>
+        <span>  <a class="next" th:href="@{/record/(pageNo=${record.pageSize}+1)}">&gt;&gt;</a></span>
+        <form th:action="@{/record}" th:method="post" style="margin-top: 15px;">
+            <span>跳转到:   </span>
+            <input th:type="text" name="pageNo" style="width: 50px;">
+
+            <input th:type="submit" name="page"  th:value="提交" style="width: 50px;">
+        </form>
+    </div>
+
+
+<div th:replace="footer::#footer"></div>
+</body>
+</html>
