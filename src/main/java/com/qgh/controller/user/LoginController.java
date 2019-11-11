@@ -41,6 +41,7 @@ public class LoginController {
 	     Result result=	userServiceImpl.login(userName, password);
          //2、将登陆信息存入session
 		 session.setAttribute("userInfor",result.getMsg());
+		session.setMaxInactiveInterval(60*60);
 		 //3、将用户登录状况信息返回前端 方便弹出提示信息
 		 model.addAttribute("code",result.getCode());
 		 //4、获取用户session中的值并存入model总 传递到html 方便动态修改头部

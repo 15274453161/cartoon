@@ -28,17 +28,13 @@ spring:
         starttls:
           enable: true
           required: true
-#  redis:
-#    host: 47.107.69.19
-#    port: 6379
-#    password: 473721601
-#    timeout: 100000
-#    jedis:
-#      pool:
-#        max-active: 5000
-#        max-wait: -1
-#        max-idle: 500
-#        min-idle: 5
+  #配置页面
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+
 
 
 mybatis:
@@ -50,20 +46,7 @@ mybatis:
     map-underscore-to-camel-case: true
 
 
-#redis配置
-#spring.redis.host=47.107.69.19
-#spring.redis.port=6379
-#spring.redis.password=473721601
-##连接池最大连接数（使用负值表示没有限制）
-#spring.redis.jedis.pool.max-active=5000
-## 连接池最大阻塞等待时间（使用负值表示没有限制）
-#spring.redis.jedis.pool.max-wait=-1
-## 连接池中的最大空闲连接
-#spring.redis.jedis.pool.max-idle=500
-## 连接池中的最小空闲连接
-#spring.redis.jedis.pool.min-idle=5
-## 连接超时时间（毫秒）
-#spring.redis.timeout=100000
+
 
 #分页配置
 pagehelper:
@@ -72,8 +55,15 @@ pagehelper:
   support-methods-arguments: true
   params: count=countSql
 
-#阿里云配置
-#AccessKeyId: LTAI4Fv9XxMZEVf8piMD9cA4
-#AccessKeySecret: ZsUJzGHcP3dSoNbdWVGn10W433F3Wv
-#Endpoint: https://oss-cn-shenzhen.aliyuncs.com
-#urlPreix: https://suyeq.oss-cn-shenzhen.aliyuncs.com/
+alipay:
+  gatewayUrl: https://openapi.alipaydev.com/gateway.do
+  appid: 2016101700704179
+  privateKey: MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCCIroSrIyOV0g0mSVl7Zyziln4rviIbpfYpdmvoDWClAGqHQXB3Ax6+hq7tmOMtjCrejsBumEUM8P9YDeFY0+/YtVSaadqvgULoTcie1pS9pXsQ3VADmXNZ8MNEEod+Vxa9sWSryk1yyrMyABwe1gWceYZr2ZtavmoIlOysYRQfUU3ueJYDdxFwL7TuAozq1f6GltJkBO5cmUCJOoJ0DbYdRHMsRKym/mDUoh5V8CmfmeClow6BfVh+ypVWsDgPAUgoqfb9hJw1PJm5P9XPOOYvh8h6etQx3cuCgrw4bDV0WyRRy2DBwCW312i1ZziZeA09EWB9u/1r2eJTYT6Ws2nAgMBAAECggEAQWeGsV/7fIatiZH209WqTioYsf3ud1NuCbrBP517h1cvxvmzLQ2VUDFnQjSWr9/ZcjWKdoHfzLF/rVawUN/q8ruPj03+kI1UJ9Ysya3JZaz9CLOWuE0EKUofI++t8IalPiqMff5+7cRgjG9wmRfE2/L+vKYFCrUbKL+n5UWGxJSZqKPg5bUsckZfEVwiBzrJPK0/bnqPQsTcdY46//WVAedPUPBH1PQMuuyuDQ48Xr/XrrGhCMCkkbl6x2f0jwJu9qT/yTmTHh+GoPWpT5x0ZJj/H4rL4YrqSfOGvI5Pfehspqbh3CFk3ElKg/AiYfA4d3Za2lzRL6rngvgPwRogwQKBgQC8OcyWTo8PUWneq0zE9OkMuAHmQ4dvz/gxyHdYosQH0eYWcbIR86qI1cqFLYdXq4D6Eqt1Wk259v0aQ3XTTvVsGa+xWBCdWmcgA6GZYQWlU118VzNrguPMOZWwK0/sKla5cqE4Jxgx7CeDevQY/Zoolzuba2na09FCSYJfa5d3UQKBgQCw/lGznMMR+cYF2uPWV1QIw3ulEsO/7Zx3Qnx9eSL+y6SYNiy2fxZ8HGXyloiZgJOVJhqAcr2dn9PLM5a1hcfhYLPVf0zXGN1M062EeyMs6lLJveerpvnB9C0YCgi+jyh7MsQsNQ/ss3ftc8tkoisAQeD/4yn9pBkAuI+bMDUndwKBgDxhzl/pk7s2QuBL07TbXGfYH8PepfQYo2ZVCPRGQty/WTCaCKX5pRuAehd/I4vcWOPgWWCsN4MQ2OE0AvhmvBSRqOsbdTkFZ0+92nl5xnXi6Hqa/sPemXVKg9qgCmOYsXmMbGu3Huvk9kgXiXb65Blhap3RN4Qbr2W0bz5tJYoBAoGAfrI+R+ViWf7C+rP6vhcbJ37PhpXNHBl6FIC6XpMVMvERbIfzL9v/e25Up/eL5t38RxrUg7ge9bNQR7gxHNWcBEBV2vFaTusUlwc7wYbn4iIGizVunhhT1rv0f63HHqmZn77yYHbHZHf/1DE8mlffkjqWVnYFO/R4lWSIH929XvcCgYBGtItvgneVANTgEeOx2L57faFoTBqxrdVWCfj6dXFXW+1DxwipMFfnLPJRZcc4FkZEOdwWoxXSONOebo/9agGIJh9zzn6W4Kw6vvnrge48Wj6XNrG858ww4M+3Qk49+ZxnEEsjKdAjqUtk8+RCdi0TipDOWRbV5D0qdyyfaaqCfA==
+  alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4KzYHU1kb8m/C1NNhF0WARszPp9UCUP3+P1NDI8+y5I+C8l1254kWdBpaefo3N71L/gtX2WYlfAbsJKYeDHSQMVtV3Nudo6JxEYK4B3vno/+uYytcG9+j4iYyiSAXgUu03lHZOUpD8iVH0kQCf9Xj4LybWu3f+xTt+Blkzr9gl9fO8Wl1SbRK1knl1B7x9gphSFOzMMTn6DB4QIwNTpV3t19sclGi4is1Yk562qXuQfSfec0XlLqHi9WlJi0hW1ow+FfnXX+PaHEpBv8JHxhXEwTK8M6a2XoeCustFo3Noa3HAymxl9DncVVCN4KGP1IWMYMN2IWhXBB4qrP2QSQmwIDAQAB
+  returnUrl: http://localhost:8090/alipay-callback-return-sult   #支付成功跳转的商家url
+  notifyUrl: http://localhost:8090/enter_chager       #异常跳转页面#SIGN_TYPE=RSA2
+
+
+
+
+

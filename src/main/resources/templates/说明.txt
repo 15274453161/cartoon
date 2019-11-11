@@ -33,3 +33,9 @@ https://promotion.aliyun.com/ntms/act/enterprise-discount.html?userCode=q9ifaihr
 
    3、站内所有资源仅供学习与参考，请勿用于商业用途，否则产生的一切后果将由您自己承担！
 
+1、支付步骤：
+
+点击下一步时判断是否登录
+
+商户订单编号：out_trade_no 在任何情况下不可重复，即时对于失败或撤销的交易，商户订单号也可能已经被使用了，
+如需再次发起支付，必须使用新的商户订单号调用接口，否则会报错。

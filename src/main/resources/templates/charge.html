@@ -4,22 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <title>用户充值中心</title>
+
+    <!--css-->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script th:src="@{/js/jquery.min.js}"></script>
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" th:href="@{/framework/bootstrap.min.css}"/>
+    <link th:href="@{/css/charge.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
+
     <!--//fonts-->
     <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
     <script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
 
-
-
-    <title>漫画节</title>
-
-    <link th:href="@{/css/charge.css}" rel="stylesheet" type="text/css" media="all"/>
-    <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
 </head>
 <body>
 <div th:replace="header::#top"></div>
@@ -27,9 +28,10 @@
     <!--充值账号开始-->
     <div class="information">
         <div class="information_box clearfix">
-            <div class="man_id"><i></i>充值昵称：<a class="col_red" href="http://user.u17.com" target="_blank">秦光泓</a><a href="http://user.u17.com"
-                                                                                                                    target="_blank">[个人管理]</a><a class="col_gray" href="javascript:logout_ajax();">[退出]</a></div>
-            <div class="man_balance"><i></i>账户余额：<span class="col_red">0</span>妖气币 <a class="col_yellow underline ml10" href="http://user.u17.com/recharge/recharge.php"
+            <div class="man_id"><i></i>充值账户：<a class="col_red" href="http://user.u17.com" target="_blank"
+                                               th:text="${userAccount}"></a></div>
+            <div class="man_balance"><i></i>账户余额：<span class="col_red">0</span>妖气币 <a class="col_yellow underline ml10"
+                                                                                      href="http://user.u17.com/recharge/recharge.php"
                                                                                       target="_blank">充值记录</a></div>
         </div>
     </div>
@@ -41,7 +43,8 @@
             <a class="cur" href="http://pay.u17.com/vip_member/alipay.html"><i></i>支付宝</a>
 
             <div class="contact">
-                在线客服：<img style="CURSOR: pointer" onclick="javascript:window.open('http://q.url.cn/cdtXPe?_type=wpa&amp;qidian=true', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"
+                在线客服：<img style="CURSOR: pointer"
+                          onclick="javascript:window.open('http://q.url.cn/cdtXPe?_type=wpa&amp;qidian=true', '_blank', 'height=544, width=644,toolbar=no,scrollbars=no,menubar=no,status=no');"
                           border="0" src="http://b.qq.com/static/images/wp/wp_3.gif"><br>
             </div>
         </div>
@@ -49,7 +52,8 @@
         <!--左侧导航end-->
         <!--右侧内容-->
         <div class="payment_con">
-            <script type="text/javascript" src="http://static.u17i.com/pay3.0/js/alipay_pay.js?t1489047741&amp;a17"></script>
+            <script type="text/javascript"
+                    src="http://static.u17i.com/pay3.0/js/alipay_pay.js?t1489047741&amp;a17"></script>
             <div class="paymentlist" id="pay_main">
                 <style type="text/css">
                     .messageBoxTd {
@@ -57,25 +61,16 @@
                         padding-top: 10px;
                     }
                 </style>
-                <div class="clearfix paymentrow" id="to_self">
-                    <div class="title">充值昵称：</div>
-                    <div class="comont">
-                        <span class="col_red">秦光泓</span>
+                <form method="post" th:action="@{/alipay/page/gotoPayPage}">
 
-                    </div>
-                </div>
-                <input type="hidden" name="user_id" id="to_user_id" value="31054689">
-                <script type="text/javascript">
-                   /* $(document).ready(function($) {
-                        var user = get_user();
-                    });*/
-                </script>
-                <div class="clearfix paymentrow">
-                    <div class="title">付费模式：</div>
-                    <div class="pay_month_area">
-                        <div class="pay_way_new" data-tip="" data-m="1" data-pid="1" data-auto="1">
-                            <div class="bot_right_bg"></div>
-                            <div class="top_info">
+
+
+                    <div class="clearfix paymentrow">
+                        <div class="title">付费模式：</div>
+                        <div class="pay_month_area">
+                            <div class="pay_way_new" data-tip="" data-m="1" data-pid="1" data-auto="1">
+                                <div class="bot_right_bg"></div>
+                                <div class="top_info">
 										<span class="price_info v-align-helper">
 											<p>
 												<i class="p_val">15</i>
@@ -84,39 +79,39 @@
 											</p>
 											<span></span>
 										</span>
-                            </div>
-                            <div class="bot_info">
-                                <div class="subwrap v-align-helper">
-                                    <p class="remarks">1500咚币</p>
+                                </div>
+                                <div class="bot_info">
+                                    <div class="subwrap v-align-helper">
+                                        <p class="remarks">1500咚币</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pay_way_new cur" data-tip="" data-m="12" data-pid="3" data-auto="1">
-                            <div class="bot_right_bg"></div>
-                            <div class="top_info">
+                            <div class="pay_way_new cur" data-tip="" data-m="12" data-pid="3" data-auto="1">
+                                <div class="bot_right_bg"></div>
+                                <div class="top_info">
 										<span class="active_info">
 											<span class="act_tag">超值</span>
 											<span class="act_desc"></span>
 										</span>
-                                <span class="price_info v-align-helper">
+                                    <span class="price_info v-align-helper">
 											<p>
-												<i class="p_val">50</i>
+												<i class="p_val" >50</i>
 												<i class="p_unit">元</i>
 												<i class="p_day_unit">/手抖一下</i>
 											</p>
 											<span></span>
 										</span>
-                            </div>
-                            <div class="bot_info">
-                                <div class="subwrap v-align-helper">
-                                    <p class="remarks">5500咚币，多赠送500咚币</p>
+                                </div>
+                                <div class="bot_info">
+                                    <div class="subwrap v-align-helper">
+                                        <p class="remarks">5500咚币，多赠送500咚币</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="cb"></div>
-                        <div class="pay_way_new" data-tip="" data-m="1" data-pid="2" data-auto="0">
-                            <div class="bot_right_bg"></div>
-                            <div class="top_info">
+                            <div class="cb"></div>
+                            <div class="pay_way_new" data-tip="" data-m="1" data-pid="2" data-auto="0">
+                                <div class="bot_right_bg"></div>
+                                <div class="top_info">
 										<span class="price_info v-align-helper">
 											<p>
 												<i class="p_val">75</i>
@@ -125,16 +120,16 @@
 												<br><i class="p_del">原价80元</i> </p>
 											<span></span>
 										</span>
-                            </div>
-                            <div class="bot_info">
-                                <div class="subwrap v-align-helper">
-                                    <p class="remarks">8000咚币</p>
+                                </div>
+                                <div class="bot_info">
+                                    <div class="subwrap v-align-helper">
+                                        <p class="remarks">8000咚币</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="pay_way_new" data-tip="" data-m="12" data-pid="4" data-auto="0">
-                            <div class="bot_right_bg"></div>
-                            <div class="top_info">
+                            <div class="pay_way_new" data-tip="" data-m="12" data-pid="4" data-auto="0">
+                                <div class="bot_right_bg"></div>
+                                <div class="top_info">
 										<span class="price_info v-align-helper">
 											<p>
 												<i class="p_val">128</i>
@@ -143,40 +138,43 @@
 												<br><i class="p_del">原价200元</i> </p>
 											<span></span>
 										</span>
-                            </div>
-                            <div class="bot_info">
-                                <div class="subwrap v-align-helper">
-                                    <p class="remarks">20000咚币</p>
+                                </div>
+                                <div class="bot_info">
+                                    <div class="subwrap v-align-helper">
+                                        <p class="remarks">20000咚币</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="zhushi col_yellow" id="tip_buy_month"></div>
-                <input id="product_id" type="hidden" name="product_id" value="3">
-                <input id="is_auto" type="hidden" name="is_auto" value="1">
+                    <div class="zhushi col_yellow" id="tip_buy_month"></div>
 
-                <script type="text/javascript">
-                    var vip_month = "1";
-                    var auto_value = "";
+                    <input id="pay_money" type="hidden" name="payMoney" value="">
+                    <input id="dong_num" type="hidden" name="dongNum" value="">
+                    <input type="hidden" name="userId" id="user_id" th:value="${userId}">
 
-                    /* ========== json var =========== */
+                    <script type="text/javascript"
+                            src="http://static.u17i.com/pay3.0/js/pay_month.js?t1508750022&amp;a17"></script>
+                    <div class="ml110 mt10 lh20">
+                        <input type="checkbox" checked="checked" name="toll" id="toll">&nbsp;&nbsp;接受并同意 <a
+                            href="http://www.u17.com/z/help/shoufeimain.html"
+                            target="_blank" class="col_blue underline">有妖气收费服务协议</a><br>
+                    </div>
+                    <div class="ml110 mt10"><img src="http://static.u17i.com/pay3.0/images/vip_pay/vip_zhifubao.png">
+                    </div>
+                    <div class="yellow_box"
+                         style="width: 150px; height:30px; line-height:30px; margin-left:110px; padding:0 10px; color:#d9292b; text-align:left;display:none;"
+                         id="pay_toll_tips"> 购买前请先同意服务条款
+                    </div>
+                    <div class="ml110 mt10" id="toll_ok_btn">
+                        <button type="submit" onclick="form_commit()">下一步</button>
+                       <!-- <a id="btn_next" class="next_btn hands" title="下一步" onclick="form_commit()"><span
+                                class="next_span">下一步</span></a>-->
 
-                    /* ========== json var =========== */
-                </script>
-                <script type="text/javascript" src="http://static.u17i.com/pay3.0/js/pay_month.js?t1508750022&amp;a17"></script>
-                <div class="ml110 mt10 lh20">
-                    <input type="checkbox" checked="checked" name="toll" id="toll">&nbsp;&nbsp;接受并同意 <a href="http://www.u17.com/z/help/shoufeimain.html"
-                                                                                                        target="_blank" class="col_blue underline">有妖气收费服务协议</a><br>
-                </div>
-                <div class="ml110 mt10"><img src=""></div>
-                <div class="yellow_box" style="width: 150px; height:30px; line-height:30px; margin-left:110px; padding:0 10px; color:#d9292b; text-align:left;display:none;"
-                     id="pay_toll_tips"> 购买前请先同意服务条款</div>
-                <div class="ml110 mt10" id="toll_ok_btn">
-                    <a id="btn_next" class="next_btn hands" title="下一步" onclick="form_commit()"><span class="next_span">下一步</span></a>
-                    <span class="pay_wait" id="wait_info" style="display: none;">正在提交支付请求...</span>
-                </div>
+                    </div>
+                </form>
             </div>
+
             <div class="pay_mask" style="display: none;"></div>
             <!-- Mode 1 -->
             <div class="vip_dialog" id="show_qrcode_box" style="display: none;">
@@ -200,32 +198,57 @@
             </div>
 
             <script type="text/javascript">
-                /*function form_commit() {
-                    if (check_user() === false || check_month() === false) {
+
+                var userId = $('#userInfor').val();
+                console.log(userId)
+
+                function form_commit() {
+                    //1、判断用户是否登录
+                    if (check_user() == false) {
+                        alert("请先登录...")
                         return false;
                     }
 
-                    var this_user = get_user(true);
-                    var product_id = !isNaN(parseInt($('#product_id').val())) ? parseInt($('#product_id').val()) : 0;
-                    var is_auto = !isNaN(parseInt($('#is_auto').val())) ? parseInt($('#is_auto').val()) : 0;
-                    var user_id = $('#to_user_id').val();
-                    var buy_other = $('#buy_other').val();
-                    var comic_id = (_for.comic_id) ? parseInt(_for.comic_id) : 0;
-                    var chapter_id = (_for.chapter_id) ? parseInt(_for.chapter_id) : 0;
+                    //获取用户id 所支付金额 、 所得咚币数量
+                    var userId = userId;
+                    var payMoney = $('.pay_way_new.cur .p_val').text();
+                    console.log('支付金额：'+payMoney)
+                    var dongNum = $('.pay_way_new.cur .remarks').text();
+                    console.log('咚币数量：'+dongNum)
 
-                    var submit_params = {
-                        user_id: user_id,
-                        item: 'vip_member',
-                        product_id: product_id,
-                        buy_other: buy_other,
-                        payment: 'alipay',
-                        auto: is_auto,
-                        fcmc: comic_id,
-                        fcpt: chapter_id
+                    $('#pay_money').val(payMoney);
+                    $('#dong_num').val(dongNum);
+
+
+
+                    /*$.ajax({
+                        url:"/alipay/page/gotoPayPage",
+                        type:"POSt",
+
+
+                        data:{
+                            userId: userId,
+                            payMoney:payMoney,
+                            dongNum:dongNum
+                        },
+                        success:function (data) {
+                    console.log(data)
+                        },
+                        error:function () {
+
+                        },
+
+                    })*/
+                }
+
+                //检查用户是否登录
+                function check_user() {
+                    if (userId == 0) {
+
+                        return false;
                     }
-
-                    submit_order(submit_params);
-                }*/
+                    return true;
+                }
             </script>
             <div id="notice_box" class="notice" style="display: none;"></div>
         </div>
@@ -233,13 +256,15 @@
     <!--整体内容end-->
 </div>
 <script type="text/javascript">
-    $('.pay_way_new').click(function(){
-       console.log($(this))
+    $('.pay_way_new').click(function () {
+        console.log($(this))
         $(this).addClass('cur');
-       // $(this).children(1).children().children().find('.p_val').css('color','red');
-      //  console.log($(this).children(1).children().children().find('.p_val'))
+
+        // $(this).children(1).children().children().find('.p_val').css('color','red');
+        //  console.log($(this).children(1).children().children().find('.p_val'))
     })
 </script>
 <div th:replace="footer::#footer"></div>
 </body>
 </html>
+

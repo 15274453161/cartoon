@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.qgh.dao.PayRecordDao">
+<insert id="addPayRecord" parameterType="com.qgh.pojo.PayRecord">
+    insert into pay_record(user_id,pay_time,pay_money,dong_num)values (#{userId},#{payTime},#{payMoney},#{dongNum},)
+</insert>
+</mapper>

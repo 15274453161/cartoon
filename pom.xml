@@ -33,24 +33,20 @@
             <version>2.1.0</version>
         </dependency>
         
-       <!--  <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
-        </dependency> -->
-        
+
         <!--引入druid数据源 阿里巴巴  -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.12</version>
         </dependency>
-        
+        <!--引入小辣椒 getter 和setter-->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!--Springboot测试-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -68,7 +64,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
-
+        <!--引入爬虫接口-->
         <!-- https://mvnrepository.com/artifact/org.jsoup/jsoup -->
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -96,7 +92,7 @@
             <artifactId>guava</artifactId>
             <version>25.1-jre</version>
         </dependency>
-        
+        <!--引入邮箱-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-mail</artifactId>
@@ -150,11 +146,19 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.13</version>
         </dependency>
+        <!--沙箱支付-->
         <dependency>
             <groupId>com.alipay.sdk</groupId>
             <artifactId>alipay-sdk-java</artifactId>
             <version>3.7.4.ALL</version>
         </dependency>
+
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
