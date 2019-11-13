@@ -67,7 +67,6 @@ public class SectionUtil {
     public static List getUrl(String url) throws IOException {
         //这个就是博客中的java反射的url
         //final String url=  "https://www.kuaikanmanhua.com/web/topic/321/";
-
         //先获得的是整个页面的html标签页面
         Document doc = Jsoup.connect(url).header("Accept-Encoding", "gzip, deflate")
                 .userAgent("Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0")

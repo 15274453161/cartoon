@@ -53,10 +53,10 @@ public class OssUtil2 {
      * @return
      */
     public static String createBucketName(OSSClient ossClient,String bucketName){
-//存储空间
+        //存储空间
         final String bucketNames=bucketName;
         if(!ossClient.doesBucketExist(bucketName)){
-//创建存储空间
+         //创建存储空间
             Bucket bucket=ossClient.createBucket(bucketName);
             System.out.println("创建存储空间成功");
             return bucket.getName();
@@ -160,7 +160,7 @@ public class OssUtil2 {
      * @return 文件的contentType
      */
     public static String getContentType(String fileName){
-//文件的后缀名
+        //文件的后缀名
         String fileExtension = fileName.substring(fileName.lastIndexOf("."));
         if(".bmp".equalsIgnoreCase(fileExtension)) {
             return "image/bmp";
@@ -186,10 +186,23 @@ public class OssUtil2 {
         if(".doc".equalsIgnoreCase(fileExtension) || "docx".equalsIgnoreCase(fileExtension)) {
             return "application/msword";
         }
+        if (".avi".equalsIgnoreCase(fileExtension)) {
+            return "video/avi";
+        }
+        if (".mp4".equalsIgnoreCase(fileExtension)) {
+            return "video/mpeg4";
+        }
+        if (".mp3".equalsIgnoreCase(fileExtension)) {
+            return "audio/mp3";
+        }
+        if (".m4a".equalsIgnoreCase(fileExtension)) {
+            System.out.println("上传文件类型为：.m4a");
+            return "audio/x-m4a";
+        }
         if(".xml".equalsIgnoreCase(fileExtension)) {
             return "text/xml";
         }
-//默认返回类型
+        //默认返回类型
         return "image/jpeg";
     }
 
@@ -197,16 +210,17 @@ public class OssUtil2 {
     //获取文件在oss里的链接(下载)
     public static String getUrl(String fileName,String folder) {
 
-
+        //获取当前bucket下的目录下的文件名
         String key=folder+fileName;
         OSSClient client = new OSSClient(ENDPOINT, ACCESS_KEY_ID, ACCESS_KEY_SECRET);
         // 设置URL过期时间为10年
         Date expiration = new Date(new Date().getTime() + 3600L * 1000 * 24 * 365 * 10*10);
         // 生成URL
         URL url = client.generatePresignedUrl(bucketName, key, expiration);
-        System.out.println("URL:"+url.toString());
+
         return url.toString();
     }
+
 
 
 }

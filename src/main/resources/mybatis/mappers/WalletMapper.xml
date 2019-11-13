@@ -17,4 +17,11 @@
         from wallet
         where user_id=#{userId}
     </select>
+
+    <update id="payChaptor">
+      update wallet
+      set pay_chaptor_all_id=CONCAT(pay_chaptor_all_id,#{chaptorId})
+      , dong_num=dong_num-30
+      where user_id=#{userId}
+    </update>
 </mapper>

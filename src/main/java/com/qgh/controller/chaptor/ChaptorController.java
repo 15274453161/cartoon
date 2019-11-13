@@ -1,11 +1,10 @@
 package com.qgh.controller.chaptor;
 
-import com.qgh.ServiceImpl.CartoonServiceImpl;
-import com.qgh.ServiceImpl.CategoryServiceImpl;
-import com.qgh.ServiceImpl.ChaptorsServiceImpl;
+import com.qgh.ServiceImpl.*;
 
 import com.qgh.pojo.Cartoon;
 import com.qgh.pojo.Chaptors;
+import com.qgh.pojo.Wallet;
 import com.qgh.util.result.Result;
 import com.qgh.util.user.UserInfor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,16 +34,17 @@ public class ChaptorController {
     @Autowired
     private UserInfor userInfor;
 
+
     @RequestMapping("/chaptor")
     public String showChaptor(int cartoonId, Model model, int currentPage, HttpSession session){
 
       
         Result result= chaptorsService.searchPage(cartoonId,currentPage);
       
-       //查询漫画信息
-       Result cartoon= cartoonService.selectById(cartoonId);
+        //查询漫画信息
+        Result cartoon= cartoonService.selectById(cartoonId);
       
-       //设置漫画信息
+        //设置漫画信息
         model.addAttribute("cartoon",cartoon.getMsg());
 
         //查询漫画分类
@@ -70,6 +70,9 @@ public class ChaptorController {
          }
          model.addAttribute("firsId",firsId);
          userInfor.user(model,session);
+
+
+
          return "chaptor";
     }
 

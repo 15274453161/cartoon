@@ -203,11 +203,11 @@ public class TestCartoon {
 
 
     //测试开始往阿里云上传章节图片
- @Test
+ /*@Test
     public void upload() {
         //获得漫画章节图片
         List<Section> sections = null;
-       // OSSClient ossClient = OssUtil2.getOSSClient();
+        OSSClient ossClient = OssUtil2.getOSSClient();
         try {
             sections = SectionUtil.getInfor(new
                     File("F:\\咚漫\\咚漫漫画\\H-Mate\\html\\hmate6.html"), 288);
@@ -235,7 +235,7 @@ public class TestCartoon {
             e.printStackTrace();
         }
 
-    }
+    }*/
 
     /**
      * 新增评论
@@ -297,6 +297,75 @@ public class TestCartoon {
                 }*//*
                 a=a+2;
                // b++;
+            }
+
+        } catch (
+                IOException e) {
+            e.printStackTrace();
+        }
+
+    }*/
+
+    /**
+     * 测试创建OSS的bucket
+     * 结果：成功
+     */
+    /*@Test
+    public void createBucket(){
+          OSSClient ossClient = OssUtil2.getOSSClient();
+         OssUtil2.createBucketName(ossClient,"qghmusic");
+    }*/
+
+    /**
+     * 上传音频到阿里云OSS对象存储
+     * 结果：
+     */
+    /*@Test
+    public void uploadAudio(){
+        //1、创建连接对象
+        OSSClient ossClient = OssUtil2.getOSSClient();
+        String father="F:\\咚漫\\背景音乐\\";//上级目录
+        String fileName="bg_music.m4a";//上传的当前文件名+后缀
+        String path=father+fileName;//上传绝对路径
+        String folder="background_music/";//上传到阿里云bucket的哪个目录
+        String bucket="qgh123456";//阿里云的bucket名
+        //2、上传文件
+        //OssUtil2.uploadObject2OSS(ossClient,new File(path),bucket,folder);
+        //3、获取返回地址
+        String url= OssUtil2.getUrl(fileName, folder); //存储到数据库
+
+        System.out.println("返回音频地址："+url);
+        //4、将返回地址存入章节的数据库
+
+        chaptorsService.updateBackgroundMusic(220,url);
+    }*/
+
+    //测试开始往阿里云上传章节图片
+   /*@Test
+    public void storeUrl() {
+        //获得漫画章节图片
+        List<Section> sections = null;
+
+        try {
+           int a=0;int b=1;
+            for (int j=0;j<4;j++) {
+
+                String url="http://127.0.0.1:8848/cpts_103_chg/test.html";
+
+                sections = SectionUtil.getUrl(url);
+
+
+                //开始将漫画图片下载到本地
+               for (int i = 0; i < sections.size(); ++i) {
+                    //下载到本地
+
+                    String pre = "F:\\咚漫\\咚漫漫画\\人鱼哀曲\\chaptor1\\";
+                    String fileName = (i + 1) + ".png";
+                    String path = pre + fileName;
+                    DownloadPicFromURL.downloadPicture(sections.get(i).getSectionUrl(), path);
+                }
+
+
             }
 
         } catch (

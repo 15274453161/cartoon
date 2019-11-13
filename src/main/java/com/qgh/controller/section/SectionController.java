@@ -1,10 +1,8 @@
 package com.qgh.controller.section;
 
-import com.qgh.ServiceImpl.CartoonServiceImpl;
-import com.qgh.ServiceImpl.ChaptorsServiceImpl;
-import com.qgh.ServiceImpl.CommentServiceImpl;
-import com.qgh.ServiceImpl.SectionServiceImpl;
+import com.qgh.ServiceImpl.*;
 
+import com.qgh.pojo.Wallet;
 import com.qgh.util.result.Result;
 
 import afu.org.checkerframework.checker.units.qual.cd;
@@ -38,6 +36,12 @@ public class SectionController {
     private CartoonServiceImpl cartoonService;
     @Autowired
     private CommentServiceImpl commentService;
+
+    @Autowired
+    private WalletServiceImpl walletService;
+    @Autowired
+    private PayRecordServiceImpl payRecordService;
+
     @Autowired
     private UserInfor userInfor;
    
@@ -52,17 +56,19 @@ public class SectionController {
         model.addAttribute("cartoonId", cartoonId);
         //(Section)
         model.addAttribute("chaptorId", chaptorId);
-        //设置漫画标题和本章标题
+        //设置本章标题
         Result chaptors = chaptorsService.searchById(chaptorId);
         model.addAttribute("chaptor", chaptors.getMsg());
+        //查询漫画标题
         Result cartoon = cartoonService.selectById(cartoonId);
-
         model.addAttribute("cartoon", cartoon.getMsg());
         //传入一级父评论
         Result com=commentService.showAll(chaptorId,1);
         System.out.println(com);
         model.addAttribute("comment",com.getMsg());
+        //设置用户信息
         userInfor.user(model,session);
+
         return "section";
     }
 
@@ -94,5 +100,28 @@ public class SectionController {
 
          return "hh";
      }
+
+    /**
+     * 用户购买指定章节
+     * @param chaptorId
+     * @param cartoonId
+     * @param session
+     * @param model
+     * @return
+     */
+    @RequestMapping("/pay_ok")
+    public String payOk(int chaptorId, int cartoonId,HttpSession session,Model model){
+
+        Result result= walletService.payChaptor(payRecordService.getUserId(session),chaptorId);
+
+        if (result.getCode()=="2000"){
+            return show(chaptorId, cartoonId, model,session);
+        }else{
+            model.addAttribute("msgFailer","充值失败");
+
+            return "redirect:/chaptor?cartoonId="+cartoonId+"&currentPage=1";
+        }
+
+    }
 
 }

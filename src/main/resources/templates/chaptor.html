@@ -11,7 +11,7 @@
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
     <link th:href="@{/css/chaptor.css}" rel="stylesheet" type="text/css" media="all"/>
     <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
-   <!-- <link rel="stylesheet" th:href="@{framework/bootstrap.min.css}"/>-->
+    <!-- <link rel="stylesheet" th:href="@{framework/bootstrap.min.css}"/>-->
     <!--//fonts-->
     <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
     <script type="text/javascript" th:src="@{/js/easing.js}"></script>
@@ -28,17 +28,18 @@
 
         .page span {
 
-             margin-right: 10px;
-             width: 20px;
-             height: 25px;
-             line-height:25px;
-             border:1px solid #444;
-             border-radius: 6px;
-             padding: 5px;
-             background-color: #8b00e9;
-             color: #fff;
-         }
-        .page span a{
+            margin-right: 10px;
+            width: 20px;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 5px;
+            background-color: #8b00e9;
+            color: #fff;
+        }
+
+        .page span a {
             color: #fff;
         }
 
@@ -56,6 +57,7 @@
                 class="ico_search2 _scriptSearch" title="作家信息">作家信息</a></span>
         <span class="author">图: KIRTY<a href="//www.dongmanmanhua.cn/search?searchMode=AUTHOR&amp;keyword=图: KIRTY"
                                         class="ico_search2 _scriptSearch" title="作家信息">作家信息</a></span>
+
     </div>
 
 </div>
@@ -67,14 +69,18 @@
             <th:block th:each="chaptors:${chaptors}">
                 <li class="episode_40" data-episode-no="40" style="margin-bottom: 2px;">
                     <!--th:href="@{/section/(chaptorId=${chaptors.id},cartoonId=${cartoon.id})}"-->
-                    <a data-buried-obj="1" th:href="@{/section/(chaptorId=${chaptors.id},cartoonId=${cartoon.id})}"  class="NPI=a:list,i=1308,r=40,g:zh_CN_zh-hans">
+                    <a data-buried-obj="1" th:href="@{/section/(chaptorId=${chaptors.id},cartoonId=${cartoon.id})}"
+                       class="NPI=a:list,i=1308,r=40,g:zh_CN_zh-hans">
 							<span class="thmb">
 								<img th:src="${chaptors.chaptorUrl}" width="100" height="73" alt="图片">
 							</span>
                         <span class="subj">
                             <span th:text="${chaptors.chaptorName}"></span>
-                             <span class="pay"  style="display: none" th:data="${chaptors.pay}"></span>
+                             <span class="pay" style="display: none" th:data="${chaptors.pay}"></span>
                              <img th:src="@{/images/lock16.png}" style="display: none">
+                            <th:block th:if="${chaptors.bgMusicUrl}">
+                                  <img th:src="@{/images/music.png}" >
+                            </th:block>
 
                         </span>
                         <span class="manage_blank"></span>
@@ -85,62 +91,77 @@
                                 th:src="@{/images/zan.png}" alt=""></span>
                         <span class="tx" th:text="${chaptors.id}"></span>
 
-
+                        <span class="userPay" th:text="${chaptors.payUserId}" style="display:none;"></span>
 
                     </a>
                 </li>
             </th:block>
 
         </ul>
-         <!--动态添加锁标志-->
+        <!--动态添加锁标志-->
         <script>
-            var pay=$('.pay');
+            var pay = $('.pay');
+            var userPay = $('.userPay');
+            var userId = $('#userInfor').val();
 
-            for (var i=0;i<pay.length;++i){
-                console.log($(pay[i]).parent().parent().attr('href'))
-               if(parseInt($(pay[i]).attr('data'))!=0){
-                   $(pay[i]).next('img').css('display','inline-block');
-                   $(pay[i]).parent().parent().attr('href','javascript:void(0)');
-               }else{
-                  /* alert("免费")*/
-               }
+            for (var i = 0; i < pay.length; ++i) {
+                //没找到返回-1 找到返回下标
+                var pay_user_id = ($(userPay[i]).text()).search(userId);
+
+                if (parseInt($(pay[i]).attr('data')) != 0 && pay_user_id == -1) {
+                    $(pay[i]).next('img').css('display', 'inline-block');//加锁标志
+                    $(pay[i]).parent().parent().attr('href', 'javascript:void(0)');
+                } else if (parseInt($(pay[i]).attr('data')) != 0 && pay_user_id != -1) {
+                    $(pay[i]).next('img').css('display', 'inline-block');//加锁标志
+                }
+                /* alert("免费")*/
             }
 
         </script>
-        <!--判断是否是收费章节-->
+
         <script>
-
+            <!--判断是否是收费章节-->
+            var userId = $('#userInfor').val();
             $('#_listUl li').click(function () {
-                var li=$(this)
-                var pay=li.children().find('.pay')
+                var li = $(this)
+                var pay = li.children().find('.pay')
+                var chaptorId = li.children().find('.tx').text();
+                var pay_user_id = li.children().find('.userPay').text().search(userId);
+                ;
+                console.log(pay_user_id);
+                //设置点击章节的漫画id和章节id
+                $('#chaptorId').val(chaptorId);
+                $('#cartoonId').val([[${cartoon.id}]]);
 
-                console.log(pay.attr('data'));
 
                 //等于1 付费章节 弹出提示框
-                if (pay.attr('data')==1){
+                if (pay.attr('data') == 1 && pay_user_id == -1) {
+                    $('.lockedPop').css('display', 'block');
+                } else {//已购买直接观看
 
-                    $('.lockedPop').css('display','block');
                 }
             })
         </script>
 
         <div class="page">
 
-        总共有:  <th:block th:text="${Pages}"></th:block>&nbsp;页
-        <span> <a class="prev" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}-1)}">&lt;&lt;</a></span>
+            总共有:
+            <th:block th:text="${Pages}"></th:block>&nbsp;页
+            <span> <a class="prev"
+                      th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}-1)}">&lt;&lt;</a></span>
 
-        当前页： <a class="num" href="" th:text="${currentPage}" style="margin-right: 10px;text-decoration: none"></a>
-        <span>  <a class="next" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}+1)}">&gt;&gt;</a></span>
+            当前页： <a class="num" href="" th:text="${currentPage}" style="margin-right: 10px;text-decoration: none"></a>
+            <span>  <a class="next" th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=${currentPage}+1)}">&gt;&gt;</a></span>
 
-        <form th:action="@{/chaptor}" th:method="post" style="margin-top: 15px;">
-            <span>跳转到:   </span>
-            <input th:type="text" name="currentPage" style="width: 50px;">
-            <input th:type="hidden" name="cartoonId"  th:value="${cartoon.id}">
-            <input th:type="submit" name="page"  th:value="提交" style="width: 50px;">
+            <form th:action="@{/chaptor}" th:method="post" style="margin-top: 15px;">
+                <span>跳转到:   </span>
+                <input th:type="text" name="currentPage" style="width: 50px;">
+                <input th:type="hidden" name="cartoonId" th:value="${cartoon.id}">
+                <input th:type="submit" name="page" th:value="提交" style="width: 50px;">
 
-        </form>
+            </form>
 
-    </div>
+        </div>
     </div>
 
     <div class="aside detail" id="_asideDetail">
@@ -149,7 +170,7 @@
         <div class="aside_btn">
             <a data-buried-obj="1" data-sc-name="PC_detail-page_read-first-btn"
                th:href="@{/section/(chaptorId=${firsId},cartoonId=${cartoon.id})}"
-               class="btn_type7 NPI=a:gofirst,g:zh_CN_zh-hans" id="_btnEpisode" >阅读第一话<span class="ico_arr21"></span></a>
+               class="btn_type7 NPI=a:gofirst,g:zh_CN_zh-hans" id="_btnEpisode">阅读第一话<span class="ico_arr21"></span></a>
         </div>
     </div>
 </div>
@@ -159,25 +180,47 @@
 
 <div class="lockedPop" style="display: none">
     <div class="popBox">
-        <div class="info"><a href="javascript:void(0);" class="close">X</a> <img src="https://static3w.kuaikanmanhua.com/static-kkfront-pc/image/web_locked.213475c.png">
+        <div class="info"><a href="javascript:void(0);" class="close">X</a> <img
+                src="https://static3w.kuaikanmanhua.com/static-kkfront-pc/image/web_locked.213475c.png">
             <p>此章节为付费内容</p>
         </div>
         <div class="download">
-            <p>扫描下方二维码或点击
-                <a th:href="@{/enter_chager}" target="_blank" rel="nofollow">
-                    用户充值中心
-                </a>
-                登陆
-            </p>
+            <p>需要花费30咚币购买，是否确认购买？ </p>
+
+            <form method="post" th:action="@{/pay_ok}" id="payForm">
+                <p style="cursor: pointer">
+                    <a target="_blank" rel="nofollow" class="ok_pay">
+                        确认购买
+                    </a>
+                </p>
+                <!-- 章节id 漫画id-->
+                <input type="hidden" th:name="chaptorId" value="" id="chaptorId">
+                <input type="hidden" th:name="cartoonId" value="" id="cartoonId">
+            </form>
+
+
             <p>客户端继续浏览</p> <img src="https://static3w.kuaikanmanhua.com/static-kkfront-pc/image/download.a411a29.png">
         </div>
     </div>
 </div>
 
 <script>
+
+    var userId = $('#userInfor').val();
     $('.close').click(function () {
-        $('.lockedPop').css('display','none');
+        $('.lockedPop').css('display', 'none');
     })
+
+    $('.ok_pay').click(function () {
+        if (userId == 0) {
+            alert("请先登录！")
+            return false;
+        }
+        $('#payForm').submit();
+
+    })
+
+
 </script>
 
 </body>

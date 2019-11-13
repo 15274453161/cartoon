@@ -69,4 +69,16 @@ public class ChaptorsServiceImpl implements ChaptorsService {
     public Integer searchByCtId(int ctId) {
         return chaptorDao.searchByCtId(ctId);
     }
+
+    /**
+     * 更新背景音乐
+     * @param chaptorId
+     * @param bgMusicUrl
+     */
+    @Override
+    public void updateBackgroundMusic(int chaptorId, String bgMusicUrl) {
+    chaptorDao.updateBackgroundMusic(chaptorId,bgMusicUrl);
+    }
+
+
 }

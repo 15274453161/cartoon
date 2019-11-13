@@ -12,4 +12,5 @@ public interface ChaptorsService {
     Result searchByChaptorIdAndCartoonId(@Param("chaptorId") int chaptorId, @Param("cartoonId") int cartoonId);
     Result searchById(int id);
     Integer searchByCtId(int ctId);
+    void updateBackgroundMusic( int chaptorId,String bgMusicUrl);
 }

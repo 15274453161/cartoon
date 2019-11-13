@@ -34,13 +34,17 @@
 <div id="content" class="viewer">
     <div class="titleBox cls">
 
-        <h3 class="title"><span class="works">作品：</span> <a href="/">查看首页</a>
+        <h3 class="title" ><span class="works">作品：</span> <a href="/">查看首页</a>
             -
             <a href="/web/topic/363" th:text="${cartoon.ctName}"></a>
             -
             <a th:text="${chaptor.chaptorName}"></a>
         </h3>
-
+        <th:block th:if="${chaptor.bgMusicUrl}">
+        <audio th:src="${chaptor.bgMusicUrl}" controls="controls">
+            Your browser does not support the audio element.
+        </audio>
+        </th:block>
     </div>
     <!--漫画内容-->
 
@@ -299,7 +303,7 @@
     </div>
 
 
-    <input id="isZan" value="0">
+    <input id="isZan" value="0" type="hidden">
 
     <!--评论回复-->
     <script type="text/javascript">

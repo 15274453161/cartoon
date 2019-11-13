@@ -29,4 +29,17 @@ from chaptor
 where ct_id=#{ctId}
 order by update_time
     </select>
+
+    <update id="addPayId">
+      update chaptor
+      set pay_user_id=CONCAT(pay_user_id,#{userId})
+      where  id=#{chaptorId}
+    </update>
+
+    <!--更新背景音乐-->
+    <update id="updateBackgroundMusic">
+      update chaptor
+      set bg_music_url=#{bgMusicUrl}
+      where  id=#{chaptorId}
+    </update>
 </mapper>

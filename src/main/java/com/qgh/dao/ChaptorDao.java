@@ -34,4 +34,13 @@ public interface ChaptorDao {
     Chaptors searchById(int id);
 
     Integer searchByCtId(int ctId);
+
+    /**
+     * 添加购买用户的id到章节行中
+     * @param chaptorId
+     * @param userId
+     */
+    void addPayId(@Param("chaptorId") int chaptorId,@Param("userId")String userId);
+
+    void updateBackgroundMusic(@Param("chaptorId") int chaptorId,@Param("bgMusicUrl")String bgMusicUrl);
 }

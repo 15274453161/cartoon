@@ -1,5 +1,6 @@
 package com.qgh.ServiceImpl;
 
+import com.qgh.dao.ChaptorDao;
 import com.qgh.dao.WalletDao;
 import com.qgh.pojo.Wallet;
 import com.qgh.service.WalletService;
@@ -19,6 +20,10 @@ import org.springframework.stereotype.Service;
 public class WalletServiceImpl implements WalletService {
     @Autowired
     private WalletDao walletDao;
+    @Autowired
+    private ChaptorDao chaptorDao;
+
+
     /**
      * 插入之前判断该表是否已经充值过了 是不是第一次充值
      * @param userId
@@ -73,4 +78,24 @@ public class WalletServiceImpl implements WalletService {
      return wallet.getDongNum();
     }
 
+    /**
+     * 用户购买指定章节 每个章节30咚币
+     * @param userId
+     * @param chaptorId
+     1、将章节id存储到用户会员表的字段中
+     2、判断购买用户的咚币是否充足
+     3、将购买用户的id存入章节表
+
+     */
+    public Result payChaptor(int userId,int chaptorId){
+        Wallet wallet=findUserId(userId);
+        if (wallet!=null&&wallet.getDongNum()>=30){
+            walletDao.payChaptor(userId,chaptorId+",");
+            chaptorDao.addPayId(chaptorId,userId+",");
+            return Result.SUCCESS;
+        }else{
+            return Result.FAILURE;
+        }
+
+    }
 }

@@ -21,4 +21,6 @@ public class Chaptors {
     private String chaptorUrl;
     private int zanNum;
     private Integer pay;//0为免费 1为付费
+    private String payUserId;
+    private String bgMusicUrl;//背景音乐
 }
