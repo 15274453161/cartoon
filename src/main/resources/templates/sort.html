@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>分类</title>
+    <link media="all" rel="stylesheet" th:href="@{/css/bootstrap.css}" type="text/css"/>
+    <link media="all" rel="stylesheet" th:href="@{/css/sort.css}" type="text/css"/>
+    <link media="all" rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+    <link media="all" rel="stylesheet" th:href="@{/css/index.css}" type="text/css"/>
+    <link media="all" rel="stylesheet" th:href="@{/css/foot.css}" type="text/css"/>
+
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/move-top.js}" type="text/javascript"></script>
+    <script th:src="@{/js/easing.js}" type="text/javascript"></script>
+    <!-- slide -->
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
+    <script th:src="@{/framework/bootstrap.min.js}" type="text/javascript"></script>
+</head>
+<body>
+<!--引入头部       html名字  里面的div的id的名称-->
+<div th:replace="header::#top"></div>
+<div class="bg" id="container">
+    <div class="" id="content">
+        <!-- sub menu-->
+        <div class="snb_wrap"><!--style="width: 100%; position: absolute;margin-top: 0"-->
+            <div class="snb _inner">
+                <ul class="snb _genre">
+
+                    <th:block th:each="cg:${categories}">
+                        <li class="g_boy" data-buried-obj="1" data-genre="BOY"
+                            data-genre-seo="BOY" data-sc-name="PC_genre-page_BOY-genre-btn"
+                            th:id="${cg.id}"><a class="NPI=a:boy,g:zh_CN_zh-hans" href="#"
+                                                onclick="return false;" th:text="${cg.cyName}"></a></li>
+                    </th:block>
+                </ul>
+                <div class="snb_sort _sorting">
+                    <span class="bar"></span>
+                    <a class="checked NPI=a:sort" href="#" id="_sortLink" onclick="return false;">按人气 <span
+                            class="pull_down_02"></span></a>
+                </div>
+            </div>
+
+        </div>
+        <div class="card_wrap genre" style="margin-top:20px">
+            <th:block th:each="cgCartoon:${sortCartoon}">
+                <h2 data-genre="LOVE" data-genre-seo="LOVE" th:class="'sub_title g_'+${cgCartoon.ctCyId}"
+                    th:data="${cgCartoon.cyName}" th:text="${cgCartoon.cyName}"></h2>
+                <ul class="card_lst">
+                    <th:block th:each="cyList:${cgCartoon.cyCartoon}">
+                        <li data-title-no="1374" id="title_li_1374">
+                            <a class="card_item NPI=a:list,i:1374,r:1,g:zh_CN_zh-hans" data-buried-obj="1"
+                               data-sc-name="PC_genre-page_LOVE-list-item"
+                               th:href="@{/chaptor/(cartoonId=${cyList.id},currentPage=1)}">
+                                <img alt=""
+                                     height="210" th:src="${cyList.ctUrl}" width="210">
+                                <div class="info">
+                                    <p class="subj" th:text="${cyList.ctName}"></p>
+                                    <p class="author" th:text="${cyList.ctAuthor}"></p>
+                                    <p class="grade_area"><span class="ico_like3">like</span><em
+                                            class="grade_num">10,000</em></p>
+                                    <p class="icon_area"></p>
+                                </div>
+                            </a>
+                        </li>
+                    </th:block>
+                </ul>
+            </th:block>
+        </div>
+    </div>
+</div>
+<!--尾部-->
+<div th:replace="footer::#footer"></div>
+
+<!--动态点击事件-->
+<script type="text/javascript">
+
+
+    //点进来以后默认让第一个标签的背景色为红色
+    $('.snb._genre li:first').addClass("on");
+    /*1、点击标签上下滚动到指定位置*/
+    // 菜单固定
+    $(function () {
+        //获取要定位元素距离浏览器顶部的距离
+        var navH = $(".snb_wrap").offset().top;
+        //滚动条事件
+        $(window).scroll(function () {
+            //获取滚动条的滑动距离
+            var scroH = $(this).scrollTop();
+            //滚动条的滑动距离大于等于定位元素距离浏览器顶部的距离，就固定，反之就不固定
+            if (scroH >= navH) {
+                $(".snb_wrap").css({"position": "fixed"});
+                $(".snb_wrap").css({"top": "0px"});
+
+                $(".snb_wrap").css({"left": "32px"});
+                console.log("固定")
+            } else if (scroH < navH) {
+                $(".snb_wrap").css({"position": "relative"});
+                console.log("不固定")
+            }
+        })
+    })
+    //点击标签滚动到指定位置 并将菜单固定到顶部
+    $('.snb._genre li').on("click", function () {
+
+        var allcyLi = $(".snb._genre li");
+        //首先要清除所有的标签的背景色
+        for (var i = 0; i < allcyLi.length; ++i) {
+            var li = $(allcyLi[i]);
+            if (li.hasClass("on")) {
+                li.removeClass("on");
+            }
+        }
+        //去所有漫画中找到指定点击的标签
+        var choosVal = this.id;
+        console.log(choosVal);
+        $('html , body').animate({scrollTop: $(".sub_title.g_" + choosVal).offset().top}, 1000);
+        //改变点击标签的背景颜色
+        $(this).addClass("on");
+    });
+
+
+</script>
+</body>
+</html>

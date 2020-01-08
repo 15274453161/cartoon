@@ -7,8 +7,9 @@ import com.qgh.util.user.UserInfor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
 
@@ -50,18 +51,15 @@ public class IndexController {
      * @return
      */
     @RequestMapping("/week")
-    public String week(int weekId,Model model,HttpSession session){
+    @ResponseBody
+    public Object week(int weekId){
 
         //根据周末id查询漫画
-         /*Result resultWk=   cartoonService.searByWeekId(weekId);
-         model.addAttribute("week",resultWk.getMsg());
-         System.out.println(resultWk);*/
-         common(model,weekId);
-         userInfor.user(model,session);
-         return "index";
+        Result result=  cartoonService.searchByWeekIdEight(weekId);
+         return result.getMsg();
     }
 
-    /**
+   /**
      * 通用的返回首页的代码
      * @param model
      */

@@ -1,0 +1,339 @@
+.snb_wrap {
+    clear: both;
+    position: relative;
+    z-index: 20;
+    height: 67px;
+    border-top: 1px solid #eaeaea;
+    border-bottom: 1px solid #eaeaea;
+    background: #fff;
+    text-align: center;
+}
+.snb_inner {
+    position: relative;
+    width: 1117px;
+    margin: 0 auto;
+}
+
+.snb_wrap.my .snb, .snb_wrap.terms .snb, .snb_wrap.about .snb, .snb_wrap.daily .snb {
+    display: inline-block;
+    *display: inline;
+    padding: 0;
+    vertical-align: top;
+    zoom: 1;
+}
+.snb {
+    height: 67px;
+    width: 1117px;
+    margin: 0 auto;
+}
+ul, ol, li {
+    list-style: none;
+}
+
+
+.dongman_cn .snb li {
+}
+
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+.snb_wrap.daily .snb li {
+    width: 144px;
+}
+.dongman_cn .snb li {
+}
+.snb li.on {
+    position: relative;
+    top: -1px;
+}
+.snb li {
+    float: left;
+    /* width: 10.4%; */
+}
+.snb li.on a {
+    /* height: 68px; */
+    background: #00d564;
+    color: #fff!important;
+    padding-top: 1px;
+}
+.snb a {
+    display: block;
+    width: 91px;
+    height: 67px;
+    line-height: 70px;
+    font-size: 15px;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    color: #000;
+    text-align: center;
+    cursor: pointer;
+}
+.snb:after {
+    display: block;
+    clear: both;
+    content: '';
+}
+.snb_sort {
+    position: absolute;
+    top: 0;
+    right: -214px;
+    width: 150px;
+}
+.dongman_cn .snb_sort .checked {
+    padding-right: 67px;
+}
+.snb_sort .checked {
+    display: block;
+    height: 67px;
+    line-height: 70px;
+    padding-right: 0 !important;
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+.pull_down_02 {
+    position: absolute;
+    top: 28px;
+    right: 13px;
+    width: 12px;
+    height: 11px;
+    vertical-align: middle;
+    margin-left: 16.5px;
+    background: url(//cdn.static.dongmanmanhua.cn/image/pc/ico_down_01.png) no-repeat;
+}
+.snb_sort .sort_box {
+    display: none;
+    position: absolute;
+    top: 67px;
+    left: 0;
+    z-index: 10;
+    width: 148px;
+    padding: 14px 0 21px;
+    border: 1px solid #eaeaea;
+    background: #fbfbfb;
+}
+.snb_sort .sort_box li {
+    position: relative;
+    text-align: right;
+}
+.dongman_cn .snb_sort .sort_box a {
+    padding-right: 66px;
+}
+.snb_sort .sort_box a {
+    display: block;
+    height: 40px;
+    line-height: 42px;
+    padding-right: 0 !important;
+    cursor: pointer;
+    font-size: 15px;
+    text-align: center;
+}
+
+
+
+/* �������� */
+.daily_lst {
+    overflow: hidden;
+    width: 1208px;
+    margin: 0 auto;
+}
+
+.daily_head {
+    width: 1200px;
+    margin: 0 auto;
+    height: 66px;
+    line-height: 78px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 17px;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    font-weight: normal;
+}
+
+.daily_section {
+    float: left;
+    *width: 154px;
+    padding: 0 4px 4px;
+}
+
+.daily_section h2 a {
+    display: block;
+    height: 66px;
+    line-height: 68px;
+    text-align: center;
+    font-size: 17px;
+    font-weight: normal;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+
+.daily_card {
+    border: 1px solid #dbdbdb;
+    border-top: none;
+}
+ul, ol, li {
+    list-style: none;
+}
+
+.daily_card li {
+    width: 152px;
+    height: 152px;
+    border-top: 1px solid #dbdbdb;
+}
+
+.daily_card_item {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    text-align: right;
+    cursor: pointer;
+}
+.daily_card_item img {
+    margin-top: 14px;
+}
+
+.daily_card_item .genre {
+    position: absolute;
+    left: 12px;
+    bottom: 7px;
+    font-size: 13px;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    line-height: 14px;
+}
+.genre.g_suspense {
+    color: #424457;
+}
+
+.daily_card_item .info {
+    position: absolute;
+    top: 14px;
+    left: 12px;
+    width: 130px;
+    height: 110px;
+    text-align: left;
+}
+
+.dongman_cn .daily_card_item .subj {
+    line-height: 18px;
+}
+.daily_card_item .subj {
+    font-size: 16px;
+    line-height: 16px;
+    font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
+    font-weight: normal;
+}
+.daily_card_item .author {
+    display: none;
+}
+
+.daily_card_item .icon_area {
+    margin-top: 3px;
+}
+
+.daily_card_item .grade_area {
+    display: none;
+}
+
+.dongman_cn .grade_area .ico_like3 {
+    margin-top: 0;
+}
+.dongman_cn .ico_like3 {
+    width: 15px;
+    height: 15px;
+    background-position: -300px -1500px;
+}
+.grade_area .ico_like3 {
+    margin: 4px 2px 0 1px;
+}
+.grade_num {
+    display: inline-block;
+    height: 16px;
+    margin-left: 3px;
+    font-size: 14px;
+    line-height: 17px;
+    font-family: 'verdana'!important;
+    color: #05f269;
+    vertical-align: top;
+}
+
+.daily_section.on {
+   * width: 228px;
+    background: #28dc18;
+}
+
+.daily_section.on h2 a {
+    color: #fff;
+}
+.daily_section.on .daily_card li {
+    width: 226px;
+}
+.daily_section.on .daily_card_item .genre {
+    top: 14px;
+    bottom: auto;
+}
+.daily_section.on .daily_card_item .info {
+    top: 28px;
+    width: 206px;
+    height: 90px;
+}
+.daily_section.on .daily_card_item .subj {
+    margin-top: 5px;
+    font-size: 17px;
+    line-height: 17px;
+}
+.daily_section.on .daily_card_item .author {
+    display: block;
+    margin-top: 2px;
+    font-size: 14px;
+    line-height: 15px;
+}
+.daily_section.on .daily_card_item .grade_area {
+    display: block;
+    position: absolute;
+    left: 11px;
+    bottom: 13px;
+    line-height: 17px;
+}
+
+.daily_section  h2 a:hover{
+    text-decoration: none;
+    color: #00f05d;
+}
+
+/*
+完结*/
+.daily_lst.comp {
+    margin-top: 45px;
+    padding-bottom: 72px;
+}
+.daily_lst.comp .daily_section.on {
+    background: none;
+}
+.daily_lst.comp .daily_section {
+    float: none;
+    width: auto;
+    padding: 0;
+}
+.daily_lst.comp .daily_head {
+    border-bottom: none;
+}
+.daily_lst.comp .daily_card {
+    overflow: hidden;
+    border: none;
+}
+.daily_lst.comp .daily_card li {
+    float: left;
+    width: 228px;
+    height: 152px;
+    margin: 0 4px 8px;
+    border: 1px solid #dbdbdb;
+}
+
+#container{
+    position: relative;
+}

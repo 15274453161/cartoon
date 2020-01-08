@@ -1,355 +1,345 @@
-
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <html>
 <head>
-<title>Home</title>
-<link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css"
-	media="all" />
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script th:src="@{/js/jquery.min.js}"></script>
-<!-- Custom Theme files -->
-<!--theme-style-->
-<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all" />
-<link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all" />
-<!--//theme-style-->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords"
-	content="Portfolic Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-<script type="application/x-javascript">
-	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
-</script>
+    <title>Home</title>
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css"
+          media="all"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
 
-<script type="text/javascript" th:src="@{/js/move-top.js}"></script>
-<script type="text/javascript" th:src="@{/js/easing.js}"></script>
+    <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
+    <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!--//theme-style-->
 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<!--//fonts-->
-<script type="text/javascript" th:src="@{/js/move-top.js}"></script>
-<script type="text/javascript" th:src="@{/js/easing.js}"></script>
-<!-- slide -->
-<script th:src="@{/js/responsiveslides.min.js}"></script>
-<script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
-<!-- slide -->
-<script th:src="@{/js/responsiveslides.min.js}"></script>
-<script>
-	// You can also use "$(window).load(function() {"
-	$(function() {
-		// Slideshow 1
-		$("#slider1").responsiveSlides({
-			auto : true,
-			nav : true,
-			speed : 500,
-			namespace : "callbacks",
-			pager : true,
-		});
-	});
-</script>
-<style>
+    <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
+    <script th:src="@{/js/responsiveslides.min.js}"></script>
 
-	.change p{
-		width: 200px;
-		color: #fff;
-	}
-	.change h5{
-		color:#000;
-	}
+    <script>
+        // You can also use "$(window).load(function() {"
+        $(function () {
+            // Slideshow 1
+            $("#slider1").responsiveSlides({
+                auto: true,
+                nav: true,
+                speed: 500,
+                namespace: "callbacks",
+                pager: true,
+            });
+        });
+    </script>
+    <style>
 
-	.portfolio-wrapper h5{
-		font-size: 18px;
-         position: absolute;
-		 top:5px;
-		color: #00f05d; /*#00f05d*/
-		left: 8px;
-	}
+        .change p {
+            width: 200px;
+            color: #fff;
+        }
 
-	.portfolio-wrapper p{
-		font-size: 18px;
-		position: absolute;
-		bottom:5px;
-		color: #fd337f; /*#00f05d*/
-		left: 8px;
-	}
-	.filters li a{
-		text-decoration: none;
-	}
-	#portfoliolist .wrapper .change{
-		cursor: pointer;
-	}
-</style>
+        .change h5 {
+            color: #000;
+        }
+
+        .portfolio-wrapper h5 {
+            font-size: 18px;
+            position: absolute;
+            top: 5px;
+            color: #00f05d; /*#00f05d*/
+            left: 8px;
+        }
+
+        .portfolio-wrapper p {
+            font-size: 18px;
+            position: absolute;
+            bottom: 5px;
+            color: #fd337f; /*#00f05d*/
+            left: 8px;
+        }
+
+        .filters li a {
+            text-decoration: none;
+        }
+
+        #portfoliolist .wrapper .change {
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-	<!--header-->
+<!--header-->
 
-	<div th:replace="header::#top"></div>
+<div th:replace="header::#top"></div>
 
-	<!---->
-	<div class="copyrights">
-		Collect from <a th:href="@{http://www.cssmoban.com/}">企业网站模板</a>
-	</div>
-	<div class="container">
-		<div class="header-bottom">
-			<div class="logo">
-				<a href="index.html"><img th:src="@{/images/logo.png}" alt=""></a>
-			</div>
-			<div class="search">
-				<form th:action="@{/search}" th:method="post">
-					<input type="text" value="Search the site..." name="cartoonName" style="color: #000"
-						onFocus="this.value = '';"
-						onBlur="if (this.value == '') {this.value = '';}"> <input
-						type="submit" value="">
-				</form>
-			</div>
-			<div class="clearfix"></div>
-		</div>
-	</div>
+<!---->
+<div class="copyrights">
+    Collect from <a th:href="@{http://www.cssmoban.com/}">企业网站模板</a>
+</div>
+<div class="container">
+    <div class="header-bottom">
+        <div class="logo">
+            <a href="index.html"><img th:src="@{/images/logo.png}" alt=""></a>
+        </div>
+        <div class="search">
+            <form th:action="@{/search}" th:method="post">
+                <input type="text" value="Search the site..." name="cartoonName" style="color: #000"
+                       onFocus="this.value = '';"
+                       onBlur="if (this.value == '') {this.value = '';}"> <input
+                    type="submit" value="">
+            </form>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
 
-	<!---->
-	<div class="container">
-		<div class="banner-top">
-			<div class="slider">
-				<ul class="rslides" id="slider1">
-					<li><img th:src="@{/images/banner7.png}" alt=""></li>
-					<li><img th:src="@{/images/banner2.png}" alt=""></li>
-					<li><img th:src="@{/images/banner3.png}" alt=""></li>
-					<li><img th:src="@{/images/banner6.png}" alt=""></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!--content-->
-	<div class="content">
-		<div class="container">
-			<div class="port">
+<!---->
+<div class="container">
+    <div class="banner-top">
+        <div class="slider">
+            <ul class="rslides" id="slider1">
+                <li><img th:src="@{/images/banner7.png}" alt=""></li>
+                <li><img th:src="@{/images/banner2.png}" alt=""></li>
+                <li><img th:src="@{/images/banner3.png}" alt=""></li>
+                <li><img th:src="@{/images/banner6.png}" alt=""></li>
+            </ul>
+            <!--script-->
+            <script>
+                $("span.menu").click(function(){
+                    $(".top-nav ul").slideToggle(500, function(){
+                    });
+                });
+            </script>
+            <!--滑动-->
+            <a href="#" class="callbacks_nav callbacks1_nav prev">Previous</a>
+            <a href="#" class="callbacks_nav callbacks1_nav next">Next</a>
 
-				<ul id="filters">
-					<th:block th:each="week:${week}">
-						<!--th:href="@{/week/(weekId=${week.id})}"-->
-					<li><a th:href="@{/week/(weekId=${week.id})}">  <span class="filter "
-						data-filter="app card icon set see is web" th:data="${week.id}" th:text="${week.wkName}"></span><label
-						class="arrow"> </label></a></li>
-						<!--<script>
-							$('#filters>li').click(function(){
-								$("#filters>li").removeClass("bg");
-								$(this).addClass("bg");
-								//点击走ajax
-								var weekId;
-								$.ajax({
-									url:"/week",
-									type:'post',
-									data:{
-										weekId:[[${week.id}]]
-									},
-									success:function(data){
-									},
-									error:function(){
-									},
-								});
-							})
+        </div>
+    </div>
+</div>
+<!--content-->
+<div class="content">
+    <div class="container">
+        <div class="port">
 
-						</script>-->
-					</th:block>
+            <ul id="filters">
+                <th:block th:each="week:${week}">
+                    <!--th:href="@{/week/(weekId=${week.id})}"-->
+                    <li th:data="${week.id}"><a href="##">  <span class="filter "
+                                                                  data-filter="app card icon set see is web"
+                                                                  th:data="${week.id}"
+                                                                  th:text="${week.wkName}"></span><label
+                            class="arrow"> </label></a></li>
 
-					<div class="clearfix"></div>
-				</ul>
+                </th:block>
 
-			</div>
-			<div id="portfoliolist" >
-				<div class="wrapper" style="margin:0 auto;width:1100px;padding:0 20px;">
+                <div class="clearfix"></div>
+            </ul>
 
-					<div th:each="cartoon: ${cartoon}" th:id="${cartoon.id}" class="portfolio app mix_all" data-cat="app"
-						  style="display: inline-block; opacity: 1;">
-						<div class="portfolio-wrapper now-content " th:id="${cartoon.id}+'a'" >
-							<a href="single.html"> <img class="img-responsive"
-														th:src="${cartoon.ctUrl}" alt="" />
-							</a>
-							<h5 th:text="${cartoon.ctName}"></h5>
-							<p th:text="${cartoon.cyName}"></p>
-						</div>
-						<a th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=1)}" style="text-decoration: none">
-						<div class="hidden new-content change" th:id="${cartoon.id}+'b'" style="height:280px"  >
-							<div class="gir" >
-								<h5 th:text="${cartoon.ctName}"></h5>
-								<p th:text="${cartoon.ctAuthor}"></p>
+        </div>
+        <div id="portfoliolist">
+            <div class="wrapper" style="margin:0 auto;width:1100px;padding:0 20px;">
 
-							</div>
-							<div class="gir">
-								<p th:text="${cartoon.ctIntroduce}" style="overflow:hidden"></p>
-							</div>
-						</div>
-						</a>
-					<script>
-						/*$('.change').click(function(){
+                <div th:each="cartoon: ${cartoon}" th:id="${cartoon.id}" class="portfolio app mix_all" data-cat="app"
+                     style="display: inline-block; opacity: 1;">
+                    <div class="portfolio-wrapper now-content " th:id="${cartoon.id}+'a'">
+                        <a href="##"> <img class="img-responsive"
+                                           th:src="${cartoon.ctUrl}" alt=""/>
+                        </a>
+                        <h5 th:text="${cartoon.ctName}"></h5>
+                        <p th:text="${cartoon.cyName}"></p>
+                    </div>
+                    <a th:href="@{/chaptor/(cartoonId=${cartoon.id},currentPage=1)}" style="text-decoration: none">
+                        <div class="hidden new-content change" th:id="${cartoon.id}+'b'" style="height:280px">
+                            <div class="gir">
+                                <h5 th:text="${cartoon.ctName}"></h5>
+                                <p th:text="${cartoon.ctAuthor}"></p>
 
-							var cartoonId;
-							$.ajax({
-								url:"/chaptor",
-								type:'post',
-								data:{
-									cartoonId:[[${cartoon.id}]]
-								},
-								success:function(data){
-									alert("成功");
-								},
-								error:function(){
-								},
-							});
-						})*/
-					</script>
-					</div>
-				</div>
+                            </div>
+                            <div class="gir">
+                                <p th:text="${cartoon.ctIntroduce}" style="overflow:hidden"></p>
+                            </div>
+                        </div>
+                    </a>
 
-				
-				<!--<div class="clearfix"></div>-->
-			</div>
-			<!-- Script for gallery Here -->
-			<script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-			<script type="text/javascript">
-
-				$(".portfolio").mouseover(function(){
-					var id = this.id;
-					$('#'+id+' .now-content').addClass("hidden");
-					$('#'+id+' .new-content').removeClass("hidden");
-				
-					
-					console.log((parseInt(id)%2)==0);
-					if(id%2==0){
-						$('#'+id+'b').css("background","#fd337f");
-
-					}else if(id%3==0){
-						$('#'+id+'b').css("background","#8b00e9");
-					}else{
-						$('#'+id+'b').css("background","#eea802");
-					}
+                </div>
+            </div>
 
 
-				});
+            <!--<div class="clearfix"></div>-->
+        </div>
 
-				$(".portfolio").mouseout(function(){
-					var id = this.id;
-					$('#'+id+' .now-content').removeClass("hidden");
-					$('#'+id+' .new-content').addClass("hidden");
-				});
+        <script type="text/javascript">
+
+            $(".portfolio").mouseover(function () {
+                var id = this.id;
+                $('#' + id + ' .now-content').addClass("hidden");
+                $('#' + id + ' .new-content').removeClass("hidden");
+
+
+                if (id % 2 == 0) {
+                    $('#' + id + 'b').css("background", "#fd337f");
+
+                } else if (id % 3 == 0) {
+                    $('#' + id + 'b').css("background", "#8b00e9");
+                } else {
+                    $('#' + id + 'b').css("background", "#eea802");
+                }
+
+
+            });
+
+            $(".portfolio").mouseout(function () {
+                var id = this.id;
+                $('#' + id + ' .now-content').removeClass("hidden");
+                $('#' + id + ' .new-content').addClass("hidden");
+            });
+
+        </script>
+
+    </div>
+</div>
+<!---->
+<div class="foot_app">
+    <div class="left">
+        <div class="img">
+            <img th:src="@{/images/ewm1.png}"/> <img th:src="@{/images/ewm2.png}"/>
+        </div>
+    </div>
+    <div class="right">
+        <div class="rl">
+            <img th:src="@{/images/erm3.png}"/>
+
+        </div>
+        <div class="rr">
+            <p class="txt">
+                上下学,上下班的无聊路途给你带来欢乐的唯一APP<br> 现在就下载到手机吧!
+            </p>
+            <div class="f_bottom">
+                <span class="sl">Andorid</span> <span class="sr">ios</span>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<div class="foot_infor">
+    <ul>
+        <li><a href="">反馈</a></li>
+        <li class="bar">|</li>
+        <li><a href="">条款</a></li>
+        <li class="bar">|</li>
+        <li><a href="">帮助</a></li>
+        <li class="bar">|</li>
+        <li><a href="">个人信息</a></li>
+        <li class="bar">|</li>
+        <li><a href="">公司介绍</a></li>
+    </ul>
+</div>
+<div class="footer">
+    <div class="container">
+        <p class="footer-class">
+            Copyright &copy; 2015.Company name All rights reserved.<a
+                target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
+        </p>
+    </div>
+
+</div>
 
 
 
 
-				$(function() {
+<script type="text/javascript">
+    //点击星期天显示
+    $('#filters li').on('click', function () {
+        //1、删除所有li的背景颜色
+        delWeekLi();
+        //2、让当前点击的li背景颜色改变
+        $(this).addClass('on');
+        //3、获取需要传递到后端的参数
+        var weekId = $(this).attr('data');
 
-					var filterList = {
+        //4、ajax请求后台显示
+        $.ajax({
+            url: '/week',
+            type: 'post',
+            data: {
+                weekId: weekId
+            },
+            success: function (data) {
+                //回填数据，刷下页面
 
-						init : function() {
+                //开始循环拼接
+                var html = '';
+                for (var i = 0; i < data.length; ++i) {
 
-							// MixItUp plugin
-							// http://mixitup.io
-							$('#portfoliolist').mixitup({
-								targetSelector : '.portfolio',
-								filterSelector : '.filter',
-								effects : [ 'fade' ],
-								easing : 'snap',
-								// call the hover effect
-								onMixEnd : filterList.hoverEffect()
-							});
 
-						},
+                    var html = html + '<div id=' + data[i].id + ' class="portfolio app mix_all" data-cat="app" style="display: inline-block; opacity: 1;">\n' +
+                        '\t\t\t\t\t\t<div class="portfolio-wrapper now-content" id=' + data[i].id + 'a' + '>\n' +
+                        '\t\t\t\t\t\t\t<a href="##"> <img class="img-responsive" src=' + data[i].ctUrl + ' alt="">\n' +
+                        '\t\t\t\t\t\t\t</a>\n' +
+                        '\t\t\t\t\t\t\t<h5>' + data[i].ctName + '</h5>\n' +
+                        '\t\t\t\t\t\t\t<p>' + data[i].cyName + '</p>\n' +
+                        '\t\t\t\t\t\t</div>\n' +
+                        '\t\t\t\t\t\t<a href=' + '/chaptor/?cartoonId=' + data[i].id + '&currentPage=1' + ' style="text-decoration: none">\n' +
+                        '\t\t\t\t\t\t<div class="new-content change hidden" id=' + data[i].id + 'b' + ' style="height: 280px; background: rgb(238, 168, 2);">\n' +
+                        '\t\t\t\t\t\t\t<div class="gir">\n' +//
+                        '\t\t\t\t\t\t\t\t<h5>' + data[i].ctName + '</h5>\n' +
+                        '\t\t\t\t\t\t\t\t<p>' + data[i].ctAuthor + '</p>\n' +
+                        '\n' +
+                        '\t\t\t\t\t\t\t</div>\n' +
+                        '\t\t\t\t\t\t\t<div class="gir">\n' +
+                        '\t\t\t\t\t\t\t\t<p style="overflow:hidden">' + data[i].ctIntroduce + '</p>\n' +
+                        '\t\t\t\t\t\t\t</div>\n' +
+                        '\t\t\t\t\t\t</div>\n' +
+                        '\t\t\t\t\t\t</a>\n' +
+                        '\n' +
+                        '\t\t\t\t\t</div>'
 
-						hoverEffect : function() {
 
-							// Simple parallax effect
-							$('#portfoliolist .portfolio').hover(function() {
-								$(this).find('.label').stop().animate({
-									bottom : 0
-								}, 200, 'easeOutQuad');
-								$(this).find('img').stop().animate({
-									top : -30
-								}, 500, 'easeOutQuad');
-							}, function() {
-								$(this).find('.label').stop().animate({
-									bottom : -40
-								}, 200, 'easeInQuad');
-								$(this).find('img').stop().animate({
-									top : 0
-								}, 300, 'easeOutQuad');
-							});
+                }
+                $('.wrapper').html(html);
 
-						}
+                $(".portfolio").mouseover(function () {
+                    var id = this.id;
+                    $('#' + id + ' .now-content').addClass("hidden");
+                    $('#' + id + ' .new-content').removeClass("hidden");
 
-					};
 
-					// Run the show!
-					filterList.init();
-				});
-			</script>
+                    if (id % 2 == 0) {
+                        $('#' + id + 'b').css("background", "#fd337f");
 
-		</div>
-	</div>
-	<!---->
-	<div class="foot_app">
-		<div class="left">
-			<div class="img">
-				<img th:src="@{/images/ewm1.png}" /> <img th:src="@{/images/ewm2.png}" />
-			</div>
-		</div>
-		<div class="right">
-			<div class="rl">
-				<img th:src="@{/images/erm3.png}" />
+                    } else if (id % 3 == 0) {
+                        $('#' + id + 'b').css("background", "#8b00e9");
+                    } else {
+                        $('#' + id + 'b').css("background", "#eea802");
+                    }
 
-			</div>
-			<div class="rr">
-				<p class="txt">
-					上下学,上下班的无聊路途给你带来欢乐的唯一APP<br> 现在就下载到手机吧!
-				</p>
-				<div class="f_bottom">
-					<span class="sl">Andorid</span> <span class="sr">ios</span>
-				</div>
 
-			</div>
-		</div>
+                });
 
-	</div>
-	<div class="foot_infor">
-		<ul>
-			<li><a href="">反馈</a></li>
-			<li class="bar">|</li>
-			<li><a href="">条款</a></li>
-			<li class="bar">|</li>
-			<li><a href="">帮助</a></li>
-			<li class="bar">|</li>
-			<li><a href="">个人信息</a></li>
-			<li class="bar">|</li>
-			<li><a href="">公司介绍</a></li>
-		</ul>
-	</div>
-	<div class="footer">
-		<div class="container">
-			<p class="footer-class">
-				Copyright &copy; 2015.Company name All rights reserved.<a
-					target="_blank" href="http://www.cssmoban.com/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
-			</p>
-		</div>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				/*
-				var defaults = {
-					containerID: 'toTop', // fading element id
-					containerHoverID: 'toTopHover', // fading element hover id
-					scrollSpeed: 1200,
-					easingType: 'linear' 
-				};
-				 */
+                $(".portfolio").mouseout(function () {
+                    var id = this.id;
+                    $('#' + id + ' .now-content').removeClass("hidden");
+                    $('#' + id + ' .new-content').addClass("hidden");
+                });
+            },
+            error: function () {
 
-				$().UItoTop({
-					easingType : 'easeOutQuart'
-				});
+            }
 
-			});
-		</script>
-		<a href="#" id="toTop" style="display: block;"> <span
-			id="toTopHover" style="opacity: 1;"> </span></a>
+        })
+    })
 
-	</div>
+    //删除所有星期中的li的背景色
+    function delWeekLi() {
+        var all_week_li = $('#filters li');
+        for (var j = 0; j < all_week_li.length; ++j) {
+            if ($(all_week_li[j]).hasClass('on')) {
+                $(all_week_li[j]).removeClass('on');
+            }
+        }
+    }
+</script>
 
 </body>
 </html>

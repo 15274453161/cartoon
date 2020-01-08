@@ -1,6 +1,7 @@
 package com.qgh.dao;
 
 import com.qgh.pojo.Cartoon;
+import com.qgh.util.result.Result;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -59,5 +60,28 @@ public interface CartoonDao {
      * @return
      */
     List<Cartoon> rankByCyId(int cyId);
+
+    /**
+     * 根据漫画的周末划分
+     * @param weekId
+     * @return
+     */
+    List<Cartoon> searchByWeekId(@Param("weekId") int weekId);
+
+    /**
+     * 查询所有连载漫画
+     * @param state
+     * @return
+     */
+    List<Cartoon> searchAllCom(int state);
+
+    List<Cartoon>  searchByWeekIdEight(int weekId);
+
+    /**
+     * 根据漫画分类Id查询该分类下的所有漫画
+     * @param cyId
+     * @return
+     */
+    List<Cartoon> searchByCyId(int cyId);
 
 }

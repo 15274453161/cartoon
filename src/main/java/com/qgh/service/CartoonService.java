@@ -23,11 +23,15 @@ public interface CartoonService {
      */
     Result indexEight(int weekId);
 
-  /*  Result searByWeekId(int  weekId);*/
+
 
     Result selectById(int cartId);
 
     Result searchCartoonByName(String cartoonName);
 
     Result  rankByCyId(int cyId);
+
+    Result searchByWeekId();
+
+    Result searchByWeekIdEight(int weekId);
 }

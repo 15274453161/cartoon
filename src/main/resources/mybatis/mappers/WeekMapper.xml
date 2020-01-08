@@ -5,6 +5,9 @@
     <select id="searchAll" resultType="com.qgh.pojo.Week">
         select * from week
     </select>
-
+    <select id="searchAllById" resultType="com.qgh.pojo.Week">
+        select * from week
+        by id
+    </select>
 
 </mapper>

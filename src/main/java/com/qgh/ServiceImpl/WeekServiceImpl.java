@@ -1,13 +1,10 @@
 package com.qgh.ServiceImpl;
 
-import com.qgh.dao.Week;
 import com.qgh.dao.WeekDao;
 import com.qgh.service.WeekService;
 import com.qgh.util.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 /**
  * @title:

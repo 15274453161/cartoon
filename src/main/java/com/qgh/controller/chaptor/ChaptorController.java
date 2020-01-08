@@ -34,7 +34,14 @@ public class ChaptorController {
     @Autowired
     private UserInfor userInfor;
 
-
+    /**
+     * 点击漫画封面进入漫画章节
+     * @param cartoonId
+     * @param model
+     * @param currentPage
+     * @param session
+     * @return
+     */
     @RequestMapping("/chaptor")
     public String showChaptor(int cartoonId, Model model, int currentPage, HttpSession session){
 
@@ -70,8 +77,6 @@ public class ChaptorController {
          }
          model.addAttribute("firsId",firsId);
          userInfor.user(model,session);
-
-
 
          return "chaptor";
     }

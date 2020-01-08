@@ -320,25 +320,25 @@ public class TestCartoon {
      * 上传音频到阿里云OSS对象存储
      * 结果：
      */
-    /*@Test
+    @Test
     public void uploadAudio(){
         //1、创建连接对象
-        OSSClient ossClient = OssUtil2.getOSSClient();
+        /*OSSClient ossClient = OssUtil2.getOSSClient();
         String father="F:\\咚漫\\背景音乐\\";//上级目录
-        String fileName="bg_music.m4a";//上传的当前文件名+后缀
+        String fileName="test4.m4a";//上传的当前文件名+后缀
         String path=father+fileName;//上传绝对路径
         String folder="background_music/";//上传到阿里云bucket的哪个目录
         String bucket="qgh123456";//阿里云的bucket名
         //2、上传文件
-        //OssUtil2.uploadObject2OSS(ossClient,new File(path),bucket,folder);
+        OssUtil2.uploadObject2OSS(ossClient,new File(path),bucket,folder);
         //3、获取返回地址
         String url= OssUtil2.getUrl(fileName, folder); //存储到数据库
 
         System.out.println("返回音频地址："+url);
         //4、将返回地址存入章节的数据库
 
-        chaptorsService.updateBackgroundMusic(220,url);
-    }*/
+        chaptorsService.updateBackgroundMusic(220,url);*/
+    }
 
     //测试开始往阿里云上传章节图片
    /*@Test

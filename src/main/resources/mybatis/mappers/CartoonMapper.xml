@@ -41,9 +41,42 @@
         WHERE ct.ct_cy_id=cy.id
         AND ct.ct_name like CONCAT('%',#{cartoonName},'%')
     </select>
-<!--排行榜根据分类id -->
+    <!--排行榜根据分类id -->
 
     <select id="rankByCyId" resultType="com.qgh.pojo.Cartoon">
         select * from cartoon ct,category cy WHERE ct.ct_cy_id=cy.id AND ct.ct_cy_id=#{cyId}  order by ct_score limit 10
+    </select>
+
+    <!--根据漫画更新周末划分 而且是在连载中的 1位连载 0完结-->
+    <select id="searchByWeekId" resultType="com.qgh.pojo.Cartoon">
+        select *
+        from cartoon ct,category cy,week wk
+        WHERE ct.ct_cy_id=cy.id
+        AND ct.ct_wk_id=#{weekId}
+        AND ct.ct_wk_id=wk.id
+        AND ct_state_id=1
+    </select>
+
+    <!--查询所有完结漫画-->
+    <select id="searchAllCom" resultType="com.qgh.pojo.Cartoon">
+        select *
+        from cartoon ct,category cy
+        WHERE ct.ct_cy_id=cy.id
+        AND ct_state_id=#{state}
+    </select>
+
+   <!-- 首页查询8条星期-->
+    <select id="searchByWeekIdEight" resultType="com.qgh.pojo.Cartoon">
+        select *
+        from cartoon ct,category cy
+        WHERE ct.ct_cy_id=cy.id
+        AND ct.ct_wk_id=#{weekId}
+        limit 8
+    </select>
+
+    <!--根据漫画分类Id查询该分类下的所有Id-->
+    <select id="searchByCyId" resultType="com.qgh.pojo.Cartoon">
+         select * from cartoon
+         WHERE ct_cy_id=#{cyId}
     </select>
 </mapper>

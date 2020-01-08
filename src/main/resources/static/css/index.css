@@ -375,3 +375,21 @@ ul.v2 li {
     -webkit-line-clamp: 3;
     overflow: hidden;
 }
+
+#filters li.on {
+    background: #44e013;
+}
+
+#filters li.on a:hover{
+    text-decoration: none;
+}
+#filters li.on a{
+    text-decoration: none;
+}
+
+#filters li a{
+    text-decoration: none;
+}
+#filters li.on span{
+    color: #fff;
+}

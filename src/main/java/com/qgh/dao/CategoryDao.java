@@ -27,4 +27,6 @@ public interface CategoryDao {
     List<Category> selectAllCY();
 
     Category seletcById(int id);
+
+
 }

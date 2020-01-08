@@ -20,5 +20,10 @@ public interface CategoryService {
      */
     List<Category> selectAllCY();
 
-   Result seletcById(int id);
+    Result seletcById(int id);
+
+    /**
+     *
+     */
+
 }

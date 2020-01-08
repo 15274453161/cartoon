@@ -5,182 +5,148 @@
     <meta charset="UTF-8">
     <title>星期类别</title>
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" type="text/css" media="all"/>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script th:src="@{/js/jquery.min.js}"></script>
+    <link th:href="@{/css/week.css}" rel="stylesheet" type="text/css" media="all"/>
     <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css" media="all"/>
     <link th:href="@{/css/index.css}" rel="stylesheet" type="text/css" media="all"/>
-    <link rel="stylesheet" th:href="@{/framework/bootstrap.min.css}"/>
+    <link th:href="@{/css/foot.css}" rel="stylesheet" type="text/css" media="all"/>
+    <!-- <link rel="stylesheet" th:href="@{/framework/bootstrap.min.css}"/>-->
     <!--//fonts-->
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script th:src="@{/js/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{/js/move-top.js}"></script>
     <script type="text/javascript" th:src="@{/js/easing.js}"></script>
     <!-- slide -->
     <script th:src="@{/js/responsiveslides.min.js}"></script>
     <script type="text/javascript" th:src="@{/framework/bootstrap.min.js}"></script>
-<style>
-    .snb_wrap {
-        clear: both;
-        position: relative;
-        z-index: 20;
-        height: 67px;
-        border-top: 1px solid #eaeaea;
-        border-bottom: 1px solid #eaeaea;
-        background: #fff;
-        text-align: center;
-    }
-    .snb_inner {
-        position: relative;
-        width: 1117px;
-        margin: 0 auto;
-    }
 
-    .snb_wrap.my .snb, .snb_wrap.terms .snb, .snb_wrap.about .snb, .snb_wrap.daily .snb {
-        display: inline-block;
-        *display: inline;
-        padding: 0;
-        vertical-align: top;
-        zoom: 1;
-    }
-    .snb {
-        height: 67px;
-        width: 1117px;
-        margin: 0 auto;
-    }
-    ul, ol, li {
-        list-style: none;
-    }
-
-
-    .dongman_cn .snb li {
-    }
-
-
-    a {
-        color: #000;
-        text-decoration: none;
-    }
-    .snb_wrap.daily .snb li {
-        width: 144px;
-    }
-    .dongman_cn .snb li {
-    }
-    .snb li.on {
-        position: relative;
-        top: -1px;
-    }
-    .snb li {
-        float: left;
-        /* width: 10.4%; */
-    }
-    .snb li.on a {
-        /* height: 68px; */
-        background: #00d564;
-        color: #fff!important;
-        padding-top: 1px;
-    }
-    .snb a {
-        display: block;
-        width: 91px;
-        height: 67px;
-        line-height: 70px;
-        font-size: 15px;
-        font-family: 'hind_m','simhei',verdana,Helvetica,sans-serif;
-        color: #000;
-        text-align: center;
-        cursor: pointer;
-    }
-    .snb:after {
-        display: block;
-        clear: both;
-        content: '';
-    }
-    .snb_sort {
-        position: absolute;
-        top: 0;
-        right: -214px;
-        width: 150px;
-    }
-    .dongman_cn .snb_sort .checked {
-        padding-right: 67px;
-    }
-    .snb_sort .checked {
-        display: block;
-        height: 67px;
-        line-height: 70px;
-        padding-right: 0 !important;
-        text-align: center;
-        font-size: 15px;
-        font-weight: bold;
-    }
-    .pull_down_02 {
-        position: absolute;
-        top: 28px;
-        right: 13px;
-        width: 12px;
-        height: 11px;
-        vertical-align: middle;
-        margin-left: 16.5px;
-        background: url(//cdn.static.dongmanmanhua.cn/image/pc/ico_down_01.png) no-repeat;
-    }
-    .snb_sort .sort_box {
-        display: none;
-        position: absolute;
-        top: 67px;
-        left: 0;
-        z-index: 10;
-        width: 148px;
-        padding: 14px 0 21px;
-        border: 1px solid #eaeaea;
-        background: #fbfbfb;
-    }
-    .snb_sort .sort_box li {
-        position: relative;
-        text-align: right;
-    }
-    .dongman_cn .snb_sort .sort_box a {
-        padding-right: 66px;
-    }
-    .snb_sort .sort_box a {
-        display: block;
-        height: 40px;
-        line-height: 42px;
-        padding-right: 0 !important;
-        cursor: pointer;
-        font-size: 15px;
-        text-align: center;
-    }
-
-    body, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select {
-        margin: 0;
-        padding: 0;
-    }
-</style>
 </head>
 <body>
 <div th:replace="header::#top"></div>
+
+<div id="container">
 <!--完结或连载-->
-<div class="snb_wrap daily _snb_wrap" style="width: 100%; position: absolute;">
+<div class="snb_wrap daily _snb_wrap" style="width: 100%; position: absolute;top:-75px">
     <div class="snb_inner">
 
         <ul class="snb _type_selector">
-            <li class="ongoing on" data-type="ONGOING"><a data-buried-obj="1" data-sc-name="PC_week-page_serial-btn" href="#ongoing">连载</a></li>
-            <li class="completed" data-type="COMPLETED"><a data-buried-obj="1" data-sc-name="PC_week-page_end-btn" href="#completed">完结</a></li>
+            <li class="ongoing on" data-type="ONGOING"><a data-buried-obj="1" data-sc-name="PC_week-page_serial-btn"
+                                                          href="#ongoing">连载</a></li>
+            <li class="completedLi" data-type="COMPLETED" ><a data-buried-obj="1" data-sc-name="PC_week-page_end-btn"
+                                                           href="#completed">完结</a></li>
         </ul>
 
 
+    </div>
 
-        <div class="snb_sort _sorting">
-            <a href="#" onclick="return false;" id="_sortLink" class="checked">按人气 <span class="pull_down_02"></span></a>
-            <ul class="sort_box">
 
-                <li><a href="#" onclick="return false;" data-sort="READ_COUNT">按人气 </a></li>
+</div>
 
-                <li><a href="#" onclick="return false;" data-sort="LIKEIT">按点赞数 </a></li>
+<!--所有连载作品-->
+<div class="daily_lst" id="dailyList" style="margin-top:69px;margin-left: 8px">
 
-                <li><a href="#" onclick="return false;" data-sort="UPDATE">按更新时间 </a></li>
+    <h2 id="ongoing" class="daily_head _type_title" data-type="ONGOING">连载作品</h2>
+    <th:block th:each="allWeek,iterStat:${allCartoon}">
+    <div class="daily_section  _list_MONDAY">
+        <h2><a href="#" class="_weekdaySelect NPI=a:mon,g:zh_CN_zh-hans" data-weekday="MONDAY" th:text="${allWeek.wkName}"></a></h2>
+        <ul class="daily_card">
+            <th:block th:each="weekCartoon:${allWeek.weekCartoon}">
+            <li id="title_li_1432" data-title-no="1432">
+                <a data-buried-obj="1" data-sc-name="PC_week-page_MONDAY-list-item" th:href="@{/chaptor/(cartoonId=${weekCartoon.id},currentPage=1)}"
+                   class="daily_card_item NPI=a:list,i=1432,r=1,g:zh_CN_zh-hans">
+                    <img th:src="${weekCartoon.ctUrl}"
+                         width="138" height="138" alt="">
+                    <p class="genre g_suspense" th:text="${weekCartoon.cyName}"></p>
+                    <div class="info">
+                        <p class="subj" th:text="${weekCartoon.ctName}"></p>
+                        <p class="author" th:text="${weekCartoon.ctAuthor}"></p>
+                        <p class="icon_area"></p>
+                    </div>
+                    <p class="grade_area"><span class="ico_like3">like</span><em class="grade_num">2,233,099</em></p>
+                </a>
+            </li>
+            </th:block>
+        </ul>
+    </div>
+    </th:block>
+</div>
+<!--完结作品-->
+<div class="daily_lst comp" style="margin-left: 8px">
+    <div class="daily_section on">
+        <h2 id="completed" class="daily_head _type_title" data-type="COMPLETED">完结作品</h2>
+        <ul class="daily_card">
 
-            </ul>
-        </div>
+           <th:block th:each="comCartoon:${comCartoon}">
+            <li id="title_li_1243" data-title-no="1243">
+                <a data-buried-obj="1" data-sc-name="PC_week-page_end-list-item" th:href="@{/chaptor/(cartoonId=${comCartoon.id},currentPage=1)}" class="daily_card_item NPI=a:complist,i=1243,r=226">
+                    <img th:src="${comCartoon.ctUrl}"
+                         width="138" height="138" alt="">
+                    <p class="genre g_campus" th:text="${comCartoon.cyName}"></p>
+                    <div class="info">
+                        <p class="subj" th:text="${comCartoon.ctName}"></p>
+                        <p class="author" th:text="${comCartoon.ctAuthor}"></p>
+                        <p class="icon_area">
+                            <span class="txt_ico_completed2">COMPLETED</span>
+                        </p>
+                    </div>
+                    <p class="grade_area"><span class="ico_like3">like</span><em class="grade_num">301,268</em></p>
+                </a>
+            </li>
+           </th:block>
+        </ul>
     </div>
 </div>
+</div>
+<!--尾部-->
+<div th:replace="footer::#footer"></div>
+
+<!--js逻辑-->
+<script type="text/javascript">
+    /*点击动态修改当前行样式*/
+    $('.daily_section >h2').on("click", function () {
+        //获得当前点击对象的父亲 li
+        var li = $(this).parent();
+        //把之前有on 的li去掉on
+        removeOn();
+        //动态添加
+        $(li).addClass("on");
+    })
+
+    //去掉所有Li中class中的的on
+    function removeOn() {
+        var allLi = $('.daily_section');
+        for (var i = 0; i < allLi.length; ++i) {
+            if ($(allLi[i]).hasClass('on')) {
+                $(allLi[i]).removeClass('on');
+            }
+        }
+    }
+
+    var flag=[[${flag}]];
+    if (flag==1){
+        var allLi = $('.daily_section');
+        $(allLi[0]).addClass('on');
+    }
+
+    //点击完结滚动效果
+    $('.completedLi').on('click',function () {
+        $('html , body').animate({scrollTop: $('.daily_lst.comp').offset().top}, 1000);
+    //固定导航栏
+        //position: fixed; top: 0px;
+        $('.snb_wrap.daily._snb_wrap').css('position','fixed');
+        $('.snb_wrap.daily._snb_wrap').css('top','0px');
+        //改变li标签的背景颜色 先删除连载的
+        $('.ongoing').removeClass('on');
+        $(this).addClass('on');
+    })
+    //点击连载
+    $('.ongoing').on('click',function () {
+        //position: fixed; top: 0px;
+        $('.snb_wrap.daily._snb_wrap').css('position','absolute');
+        $('.snb_wrap.daily._snb_wrap').css('top','-75px');
+        //
+        $(this).addClass('on');
+        $('.completedLi').removeClass('on');
+    })
+</script>
 </body>
 </html>
